@@ -13,9 +13,9 @@ install:
 script:
   - npm test
   - npm run jsonlint
-  - npm run envjslint
+  - npm run envjslint-ci
 
 after_script:
-  - npm run envjs
+  #- npm run envjs
 
 #End.

@@ -22,10 +22,10 @@
   "scripts": {
     "copy-env": "cp -n .env-example.js .env.js",
     "server": "node bin/index.js",
-    "envjs": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}'",
+    "envjslint-ci": "node bin/envjslint.js",
     "envjslint": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}' | jsonlint-cli",
     "jsonlint": "jsonlint-cli data/*",
-    "test": "eslint src/popup-geojson-map.js bin/index.js !.env.js"
+    "test": "eslint src/popup-geojson-map.js bin/*.js !.env.js"
   },
   "eslintConfig": {
     "__env": {

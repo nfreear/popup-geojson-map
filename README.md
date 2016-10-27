@@ -34,6 +34,47 @@ npm test
 ```
 
 
+## Code
+
+```html
+<p id="mapid"></p>
+
+<script type="text/html" id="popup-template">
+  <div class="audio-popup">
+    <h2><%= title %></h2>
+    <audio src="<%= audio_url %>" controls ></audio>
+  </div>
+</script>
+
+<script>
+  // Mostly use defaults!
+  window.MAP_CONFIG = {
+    popupTemplate: document.querySelector('#popup-template').innerText,
+    geoJsonUrl: 'data/world-audio-geo-data.json'
+  }
+</script>
+
+<script src="src/popup-geojson-map.js"></script>
+```
+
+GeoJSON:
+```json
+"features": [
+  {
+    "type": "Feature",
+    "properties": {
+      "title": "raining on the roof of Jennie Lee Building.wav",
+      "audio_url": "http://freesound.org/data/previews/92/92744_1315834-lq.mp3"
+    },
+    "geometry": {
+      "type": "Point",
+      "coordinates": [ -0.7110, 52.0241 ]
+    }
+  }
+]
+```
+
+
 ---
 
 * GitHub: [nfreear/audio-popup-map][]
