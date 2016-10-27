@@ -19,7 +19,7 @@
     "node": ">= 0.12.0"
   },
   "scripts": {
-    "copy-env": "copy -n .env-example.js .env.js",
+    "copy-env": "cp -n .env-example.js .env.js",
     "server": "node bin/index.js",
     "test": "eslint src/popup-geojson-map.js bin/index.js !.env.js"
   },
