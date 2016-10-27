@@ -1,15 +1,8 @@
 #
 
-#.gitignore
-#.env-example.js
-#README.md
-
 .env
 .env.js
-.travis.yml
-package.json
 node_modules
 npm-debug.log
-index.js
 
 #End.

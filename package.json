@@ -1,0 +1,39 @@
+{
+  "name": "popup-geojson-map",
+  "# name was": "audio-popup-map",
+  "description": "Put for example, an audio player, in a map popup, using GeoJSON, Leaflet.JS, LoDash, Mapbox etc.",
+  "version": "",
+  "author": "Nick Freear <nfreear@yahoo.co.uk>",
+  "license": "MIT",
+  "repository": "https://github.com/nfreear/audio-popup-map",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "node-static": "^0.7.9"
+  },
+  "files": [
+    "src/popup-geojson-map.js",
+    "bin/index.js"
+  ],
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "scripts": {
+    "copy-env": "copy -n .env-example.js .env.js",
+    "server": "node bin/index.js",
+    "test": "eslint src/popup-geojson-map.js bin/index.js !.env.js"
+  },
+
+  "eslintConfig": {
+    "__env": {
+      "browser": true
+    },
+    "globals": { "window": false },
+    "rules": {
+      "no-undef": "error",
+      "eqeqeq": "error",
+      "curly": "error",
+      "semi": "error"
+    }
+  }
+}
