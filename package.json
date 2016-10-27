@@ -1,7 +1,6 @@
 {
   "name": "popup-geojson-map",
-  "# name was": "audio-popup-map",
-  "description": "Put for example, an audio player, in a map popup, using GeoJSON, Leaflet.JS, LoDash, Mapbox etc.",
+  "description": "Put for example, an audio player, in a map popup, using GeoJSON, Leaflet.JS, Lodash...",
   "version": "",
   "author": "Nick Freear <nfreear@yahoo.co.uk>",
   "license": "MIT",
@@ -9,10 +8,12 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^3.8.1",
+    "jsonlint-cli": "^1.0.1",
     "node-static": "^0.7.9"
   },
   "files": [
     "src/popup-geojson-map.js",
+    ".env-example.js",
     "bin/index.js"
   ],
   "engines": {
@@ -21,14 +22,18 @@
   "scripts": {
     "copy-env": "cp -n .env-example.js .env.js",
     "server": "node bin/index.js",
+    "envjs": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}'",
+    "envjslint": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}' | jsonlint-cli",
+    "jsonlint": "jsonlint-cli data/*",
     "test": "eslint src/popup-geojson-map.js bin/index.js !.env.js"
   },
-
   "eslintConfig": {
     "__env": {
       "browser": true
     },
-    "globals": { "window": false },
+    "globals": {
+      "window": false
+    },
     "rules": {
       "no-undef": "error",
       "eqeqeq": "error",
