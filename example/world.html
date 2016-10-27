@@ -1,0 +1,167 @@
+<!doctype html> <title> *Leaflet.JS audio-player example </title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+
+<style>
+  body { font: .95em sans-serif; color: #333; background: #fefefe; max-width: 80em; margin: 0 auto; }
+  .leaflet-popup-content { margin: 9px; }
+  .leaflet-popup-content-wrapper { border-radius: 6px; }
+
+  #mapid { x-height: 180px; height: 320px; }
+</style>
+
+
+<h1> Leaflet.JS audio-player map example (Mapbox) </h1>
+
+<p>The example audio files are (mostly) OGG, so you'll <a href="http://caniuse.com/#feat=ogg-vorbis">need Firefox, Chrome or Opera</a>.</p>
+
+
+<p id="mapid"></p>
+
+
+<script type="application/geo+json" id="geo-data">
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Budapest metro Jingle",
+        "description": "Budapest, Hungary",
+        "audio_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Budapest_metro_jingle.ogg",
+        "credit_url": "https://commons.wikimedia.org/wiki/File:Budapest_metro_jingle.ogg",
+        "marker-symbol": "commercial",
+        "marker-size": "large",
+        "marker-color": "c4ba6a"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 18.8494264, 47.4808706 ]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "News CS jingle",
+        "description": "Prague, Czech Republic",
+        "audio_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/News-cs-jingle.ogg",
+        "credit_url": "https://commons.wikimedia.org/wiki/File:News-cs-jingle.ogg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 14.3819975, 50.0842324 ]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Sleepys jingle",
+        "description": "Bed maker &mdash; Hicksville, New York.",
+        "audio_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Sleepys_jingle_60_seconds.ogg",
+        "credit_url": "https://commons.wikimedia.org/wiki/File:Sleepys_jingle_60_seconds.ogg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -73.523333, 40.763333 ]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "ding-dong3",
+        "description": "'Recorded at a metro station in Barcelona'",
+        "audio_url": "https://freesound.org/data/previews/155/155776_2767757-lq.mp3",
+        "credit_url": "http://freesound.org/people/MetroSoundBCN/sounds/155776/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ 2.0083379, 41.3947046 ]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "London Underground - Mind The Gap",
+        "description": "'Short sample of the famous 'mind the gap' announcement...'",
+        "audio_url": "https://freesound.org/data/previews/327/327942_4486188-lq.mp3",
+        "credit_url": "http://freesound.org/people/kwahmah_02/sounds/327942/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -0.09, 51.505 ]
+      }
+    }
+  ],
+
+  "x-useful-resources": [
+    "paris:  -2.3732829, 48.8453195"
+  ]
+}
+</script>
+
+
+<script type="text/html" id="popup-template">
+<div class="audio-popup">
+    <h2><%= title %></h2>
+    <span><%= description %></span> <a href="<%= credit_url %>">credit</a>
+    <audio src="<%= audio_url %>" controls ></audio>
+</div>
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/lodash/4.16.2/lodash.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+
+
+<script>
+
+var zoom = 3  //13,
+  , mymap = L.map('mapid').setView([ 51.505, -0.09 ], zoom)
+  , popup_template = _.template(document.querySelector('#popup-template').innerText)
+  , geo_data = JSON.parse(document.querySelector('#geo-data').innerText)
+  ;
+
+L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
+//L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'your.mapbox.project.id',
+    accessToken: 'your.mapbox.public.access.token'
+}).addTo(mymap);
+
+
+console.info(geo_data);
+
+L.geoJson(geo_data, {
+    onEachFeature: function (feature, layer) {
+        if (feature.properties && feature.properties.audio_url) {
+            layer.bindPopup(popup_template(feature.properties));
+        }
+        else if (feature.properties && feature.properties.popupContent) {
+            layer.bindPopup(feature.properties.popupContent);
+        }
+    }
+}).addTo(mymap);
+
+</script>
+
+
+
+<pre>
+
+
+&copy; Nick Freear, 2016-09-26 (License: MIT.)
+
+* https://commons.wikimedia.org/wiki/Category:Audio_files_of_music
+* http://www.freesound.org/search/?q=metro
+* https://lodash.com/docs/4.16.2#template
+* http://leafletjs.com/examples/geojson.html
+
+
+Gist:  https://gist.github.com/nfreear/fd1005a2af7a8166862011b8fcb8a821
+
+</pre>
