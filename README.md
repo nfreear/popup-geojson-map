@@ -28,7 +28,7 @@ npm test  ## Todo.
 * http://www.freesound.org/search/?q=metro
 * http://leafletjs.com/examples/geojson.html
 * http://smalljs.org/ajax/superagent/
-* USES: Leaflet.js, lodash.js, Superagent, and Mapbox.
+* USES: Leaflet.js, (lodash.js or Underscore.js), Superagent, and Mapbox.
 
 ---
 

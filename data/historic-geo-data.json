@@ -1,0 +1,34 @@
+{
+  "//": [
+    "Interesting sounds relating to Milton Keynes and London, UK."
+  ],
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "raining on the roof of Jennie Lee Building.wav",
+        "description": "'Rain on the roof of the Jennie Lee Building of Open University in Milton Keynes...'",
+        "audio_url": "http://freesound.org/data/previews/92/92744_1315834-lq.mp3",
+        "credit_url": "http://freesound.org/people/laspaziale/sounds/92744/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -0.711009, 52.024157 ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "London Underground - Mind The Gap",
+        "description": "'Short sample of the famous 'mind the gap' announcement...'",
+        "audio_url": "https://freesound.org/data/previews/327/327942_4486188-lq.mp3",
+        "credit_url": "http://freesound.org/people/kwahmah_02/sounds/327942/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -0.09, 51.505 ]
+      }
+    }
+  ]
+}

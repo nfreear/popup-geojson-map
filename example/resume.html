@@ -1,0 +1,54 @@
+<!doctype html> <meta charset="utf-8"> <title> Map-based résumé example </title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
+<link rel="stylesheet" href="css/style.css" />
+
+
+<h1> Map-based résumé example </h1>
+
+<p> Example of a CV or résumé for a globe-trotting chef, based on a world map! </p>
+
+
+<p id="mapid" class="map wide"></p>
+
+
+<script type="text/html" id="popup-template">
+<div class="resume-popup">
+  <h2><%= feature['Job title'] %></h2>
+  <span>Period: <%= feature.Period %></span>
+  <p>Employer: <%= feature.Employer %></p>
+  <p><%= feature.Summary %></p>
+</div>
+</script>
+
+
+<script src="../.env.js"></script>
+<script>
+window.MAP_CONFIG = {
+  zoom: 2,
+  geoJsonUrl: 'https://rawgit.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d/raw/3c65e614f33a7540d9f5887a35fc5aa90c0f6123/chef-world-resume.geo.json',
+  //geoJsonUrl: 'https://gist.githubusercontent.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d/raw/ea74d0b574e822acee4fd9ca2c3111bc5e798b5d/chef-world-resume.geo.json',
+  popupTemplate: document.querySelector('#popup-template').innerText,
+  templateSettings: { variable: 'feature' },
+  checkProperty: 'Summary'
+}
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/2.3.0/superagent.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+
+<script src="../src/popup-geojson-map.js"></script>
+
+
+<pre>
+
+
+&copy; Nick Freear, 2016-09-26 | License: MIT.
+
+* Data: https://gist.github.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d
+
+* Note: this example uses Underscore.JS instead of Lodash, to cope with
+  GeoJSON feature-properties containing spaces.
+</pre>

@@ -1,15 +1,15 @@
-<!doctype html> <meta charset="utf-8"> <title> *Leaflet.JS audio-player example </title>
+<!doctype html> <meta charset="utf-8"> <title> Historic UK audio-player example </title>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css" />
 <link rel="stylesheet" href="css/style.css" />
 
 
-<h1> Leaflet.JS audio-player map example </h1>
+<h1> Historic UK audio-player example </h1>
 
 <p>The example audio files are (mostly) OGG, so you'll <a href="http://caniuse.com/#feat=ogg-vorbis">need Firefox, Chrome or Opera</a>.</p>
 
 
-<p id="mapid"></p>
+<p id="mapid" class="map medium"></p>
 
 
 <script type="text/html" id="popup-template">
@@ -24,10 +24,11 @@
 <script data-not_needed_src="../.env.js"></script>
 <script>
 window.MAP_CONFIG = {
-  zoom: 6,
+  latLng: [ 51.863404, -0.7694265 ],
+  zoom: 8,
   popupTemplate: document.querySelector('#popup-template').innerText,
   checkProperty: 'audio_url',
-  geoJsonUrl: '../data/world-audio-geo-data.json',  // Todo!
+  geoJsonUrl: '../data/historic-geo-data.json',
   tileUrl: 'http://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg',
   attribution: 'Historical Maps Layer, 1919-1947 from the <a href="http://maps.nls.uk/projects/api/">NLS Maps API</a>',
   opacity: 0.85,
@@ -37,7 +38,7 @@ window.MAP_CONFIG = {
 
 
 <script src="https://cdn.jsdelivr.net/lodash/4.16.2/lodash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/2.3.0/superagent.min.js" data-src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/2.3.0/superagent.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
 
 <script src="../src/popup-geojson-map.js"></script>

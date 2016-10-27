@@ -11,10 +11,11 @@
     latLng: [ 51.505, -0.09 ], // London, UK!
     zoom: 3,
     minZoom: 2,
-    maxZoom: 6,  //Was: 18,
+    maxZoom: 12, //6,  //Was: 18,
     opacity: 1,
     mapId: 'mapid',
     popupTemplate: '',  // Example: document.querySelector('#popup-template').innerText
+    templateSettings: {},
     checkProperty: 'audio_url',
     geoJsonUrl: '../data/world-audio-geo-data.json', // alt: "?p=map/audio-geo-data.json", <!--EDIT-ME-->
     tileUrl: 'https://api.mapbox.com/styles/v1/mapbox/dark-v9/tiles/256/{z}/{x}/{y}?access_token={accessToken}',
@@ -27,14 +28,14 @@
   var JSON = W.JSON  // Derive "globals".
     , request = W.superagent
     , L = W.L  // Leaflet
-    , _ = W._  // Lodash
+    , _ = W._  // Lodash, or Underscore.js
     , CFG = _.extend(defaults, W.MAP_CONFIG)
     ;
 
   W.console.debug('Map config:', CFG);
 
   var mymap = L.map(CFG.mapId).setView(CFG.latLng, CFG.zoom)
-    , popup_template = _.template(CFG.popupTemplate)
+    , popup_template = _.template(CFG.popupTemplate, null, CFG.templateSettings)
     , accessToken = _.template(CFG.accessToken)
     ;
 
