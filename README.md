@@ -3,8 +3,7 @@
 
 # popup-geojson-map.js
 
-Browser Javascript library to create a map, with popups containing structured data,
-for example, audio players.
+Easily create interactive maps, with popups containing structured data, for example, audio players.
 
 Software & specs:
 * [GeoJSON][]
@@ -21,7 +20,7 @@ Example data & audio files:
 * [Commons][]
 
 
-## Usage
+## Build & test
 
 ```sh
 npm install
@@ -33,8 +32,7 @@ npm run server
 npm test
 ```
 
-
-## Code
+## Usage
 
 ```html
 <p id="mapid"></p>

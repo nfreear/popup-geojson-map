@@ -1,4 +1,5 @@
 /*!
+  popup-geojson-map
 
   © Nick Freear, 2016-09-26 | License: MIT.
 */
