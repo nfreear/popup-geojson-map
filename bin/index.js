@@ -2,7 +2,7 @@
   Web server for examples.
 
   In a terminal, type:
-      npm run server
+      npm start
       # node bin/index.js
 
   In a browser, visit:
@@ -14,20 +14,20 @@
 */
 
 
-/* global require, console */
+/* global require, console, __dirname */
 
-var port = 9000;
-var static = require('node-static');
-
-var fileServer = new static.Server('./');
+const PORT = 9000;
+const static = require('node-static');
+const path = require('path').join;
+const fileServer = new static.Server(path(__dirname, '..'));
 
 require('http').createServer(function (request, response) {
     request.addListener('end', function () {
         fileServer.serve(request, response);
     }).resume();
-}).listen(port); //(8080);
+}).listen(PORT); //(8080);
 
 
 console.info('Web server running...');
-console.info('Visit: http://localhost:' + port + '/example/world.html');
+console.info('Visit: http://localhost:%d/example/world.html', PORT);
 console.info('Type control + C to exit.');

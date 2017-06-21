@@ -12,31 +12,31 @@
 
 
 <script type="text/html" id="popup-template">
-<div class="audio-popup">
-  <h2><%= title %></h2>
-  <span><%= description %></span> <a href="<%= credit_url %>">credit</a>
-  <audio src="<%= audio_url %>" controls ></audio>
-</div>
+  <div class="audio-popup">
+    <h2><%= title %></h2>
+    <span><%= description %></span> <a href="<%= credit_url %>">credit</a>
+    <audio src="<%= audio_url %>" controls ></audio>
+  </div>
 </script>
 
 
-<script data-not_needed_src="../.env.js"></script>
 <script>
-window.MAP_CONFIG = {
+MAP_CONFIG = {
   latLng: [ 51.863404, -0.7694265 ],
   zoom: 8,
   geoJsonUrl: '../data/historic-geo-data.json',
-  tileUrl: 'http://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg',
+  tileUrl: 'https://geo.nls.uk/maps/api/nls/{z}/{x}/{y}.jpg',
   attribution: 'Historical Maps Layer, 1919-1947 from the <a href="http://maps.nls.uk/projects/api/">NLS Maps API</a>',
   opacity: 0.85
 }
 </script>
 
 
-<link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet" />
-<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-<script src="https://cdn.jsdelivr.net/lodash/4.16.4/lodash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/2.3.0/superagent.min.js"></script>
+<link href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" rel="stylesheet" />
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+<script src="https://unpkg.com/underscore@1.8.3/underscore-min.js"></script>
+<script src="https://unpkg.com/superagent@3.5.2/superagent.js"></script>
+
 
 <script src="../src/popup-geojson-map.js"></script>
 

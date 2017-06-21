@@ -12,6 +12,7 @@ Software & specs:
 * [SuperAgent][]
 
 Map tiles:
+* [Leaflet providers][prov]
 * [Mapbox][]
 * [National Library of Scotland - Historic Maps][NLS]
 
@@ -24,11 +25,9 @@ Example data & audio files:
 
 ```sh
 npm install
-
 npm run copy-env
 
 npm run server
-
 npm test
 ```
 
@@ -45,14 +44,10 @@ npm test
 </script>
 
 <script>
-  // Mostly use defaults!
-  window.MAP_CONFIG = {
-    popupTemplate: document.querySelector('#popup-template').innerText,
-    geoJsonUrl: 'data/world-audio-geo-data.json'
-  }
+  MAP_CONFIG = { geoJsonUrl: 'data/world-audio-geo-data.json' } // Mostly use defaults!
 </script>
 
-<script src="src/popup-geojson-map.js"></script>
+<script src="https://unpkg.com/popup-geojson-map@1.1.0-beta"></script>
 ```
 
 GeoJSON:
@@ -62,7 +57,7 @@ GeoJSON:
     "type": "Feature",
     "properties": {
       "title": "raining on the roof of Jennie Lee Building.wav",
-      "audio_url": "http://freesound.org/data/previews/92/92744_1315834-lq.mp3"
+      "audio_url": "https://freesound.org/data/previews/92/92744_1315834-lq.mp3"
     },
     "geometry": {
       "type": "Point",
@@ -75,16 +70,19 @@ GeoJSON:
 
 ---
 
-* GitHub: [nfreear/audio-popup-map][]
+* NPM:     [popup-geojson-map][npm]
+* GitHub: [nfreear/popup-geojson-map][]
 * Gist:   [nfreear/fd10..][gist]
 
 ---
-&copy; Nick Freear, 2016-09-26 | License: [MIT][].
+&copy; 2016-2017 Nick Freear, | License: [MIT][].
 
-[MIT]: https://nfreear.mit-license.org "The MIT License | © 2016 Nick Freear"
+
+[MIT]: https://nfreear.mit-license.org/2016-2017 "MIT License | © 2016-2017 Nick Freear (date: 2016-09-26)"
 [travis-icon]: https://travis-ci.org/nfreear/popup-geojson-map.svg
 [travis-ci]: https://travis-ci.org/nfreear/popup-geojson-map "Build status – Travis-CI"
-[nfreear/audio-popup-map]: https://github.com/nfreear/audio-popup-map
+[npm]: https://npmjs.com/package/popup-geojson-map
+[nfreear/popup-geojson-map]: https://github.com/nfreear/popup-geojson-map
 [gist]: https://gist.github.com/nfreear/fd1005a2af7a8166862011b8fcb8a821
 [resume]: https://gist.github.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d "Resume GeoJSON"
 
@@ -97,6 +95,8 @@ GeoJSON:
 [Underscore.js]: http://underscorejs.org/
 [Freesound]: http://www.freesound.org/search/?q=metro "Freesound search: 'metro'"
 [Commons]: https://commons.wikimedia.org/wiki/Category:Audio_files_of_music
+[prov]: https://leaflet-extras.github.io/leaflet-providers/preview/
+  "This page shows mini maps for all the layers available in Leaflet-providers."
 [Mapbox]: https://www.mapbox.com/
 [NLS]: http://maps.nls.uk/projects/api/ "National Library of Scotland - Historic Maps API."
 

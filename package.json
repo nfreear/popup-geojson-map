@@ -1,36 +1,40 @@
 {
   "name": "popup-geojson-map",
-  "version": "1.0.0-beta",
+  "version": "1.1.0-beta",
   "description": "Easily create interactive maps, with popups containing structured data, for example, audio players.",
   "browser": "src/popup-geojson-map.js",
   "author": "Nick Freear {@nfreear}",
   "license": "MIT",
-  "keywords": [ "geojson", "map", "leaflet", "audio", "lodash", "template", "popup" ],
+  "keywords": "geojson, map, leaflet, audio, lodash, template, popup, freesound, commons",
   "repository": "https://github.com/nfreear/popup-geojson-map",
   "bugs": "https://github.com/nfreear/popup-geojson-map/issues",
-  "dependencies": {},
+  "dependencies": {
+    "lodash.template": "^4.4.0",
+    "superagent": "^3.5.2"
+  },
   "devDependencies": {
-    "eslint": "^3.8.1",
+    "eslint": "^3.19.0",
     "jsonlint-cli": "^1.0.1",
     "node-static": "^0.7.9"
   },
   "files": [
     "src/popup-geojson-map.js",
-    ".env-example.js",
-    "bin/index.js"
+    "data/",
+    "example/"
   ],
   "engines": {
-    "node": ">= 0.12.0"
+    "node": ">= 4.0.0"
   },
   "scripts": {
     "copy-env": "cp -n .env-example.js .env.js",
-    "server": "node bin/index.js",
+    "start": "node bin/index.js",
     "envjslint-ci": "node bin/envjslint.js",
     "envjslint": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}' | jsonlint-cli",
     "jsonlint": "jsonlint-cli data/*",
-    "test": "eslint src/popup-geojson-map.js bin/*.js !.env.js"
+    "test": "eslint src/*.js bin/*.js !.env.js"
   },
   "eslintConfig": {
+    "parserOptions": { "ecmaVersion": 6 },
     "__env": {
       "browser": true
     },

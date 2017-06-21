@@ -12,31 +12,29 @@
 
 
 <script type="text/html" id="popup-template">
-<div class="resume-popup">
-  <h2><%= feature['Job title'] %></h2>
-  <span>Period: <%= feature.Period %></span>
-  <p>Employer: <%= feature.Employer %></p>
-  <p><%= feature.Summary %></p>
-</div>
+  <div class="resume-popup">
+    <h2><%= feature['Job title'] %></h2>
+    <span>Period: <%= feature.Period %></span>
+    <p>Employer: <%= feature.Employer %></p>
+    <p><%= feature.Summary %></p>
+  </div>
 </script>
 
 
-<script src="../.env.js"></script>
 <script>
-window.MAP_CONFIG = {
+MAP_CONFIG = {
   zoom: 2,
   geoJsonUrl: 'https://rawgit.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d/raw/3c65e614f33a7540d9f5887a35fc5aa90c0f6123/chef-world-resume.geo.json',
-  //geoJsonUrl: 'https://gist.githubusercontent.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d/raw/ea74d0b574e822acee4fd9ca2c3111bc5e798b5d/chef-world-resume.geo.json',
   templateSettings: { variable: 'feature' },
   checkProperty: 'Summary'
 }
 </script>
 
 
-<link href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" rel="stylesheet" />
-<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-<script src="https://cdn.jsdelivr.net/underscorejs/1.8.3/underscore-min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/2.3.0/superagent.min.js"></script>
+<link href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" rel="stylesheet" />
+<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+<script src="https://unpkg.com/underscore@1.8.3/underscore-min.js"></script>
+<script src="https://unpkg.com/superagent@3.5.2/superagent.js"></script>
 
 
 <script src="../src/popup-geojson-map.js"></script>
