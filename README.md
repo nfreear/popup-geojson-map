@@ -12,7 +12,7 @@ Software & specs:
 * [SuperAgent][]
 
 Map tiles:
-* [Leaflet providers][prov]
+* [Leaflet providers][prov] — _default / free._
 * [Mapbox][]
 * [National Library of Scotland - Historic Maps][NLS]
 
@@ -44,10 +44,10 @@ npm test
 </script>
 
 <script>
-  MAP_CONFIG = { geoJsonUrl: 'data/world-audio-geo-data.json' } // Mostly use defaults!
+  MAP_CFG = { geoJson: 'data/world-audio-geo.json' } // Mostly use defaults!
 </script>
 
-<script src="https://unpkg.com/popup-geojson-map@1.1.0-beta"></script>
+<script src="https://unpkg.com/popup-geojson-map@1.1.0-beta#..js"></script>
 ```
 
 GeoJSON:

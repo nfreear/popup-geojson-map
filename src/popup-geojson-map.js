@@ -18,7 +18,7 @@
     popupTemplate: '#popup-template',
     templateSettings: {},
     checkProperty: 'audio_url',
-    geoJsonUrl: '../data/world-audio-geo-data.json',
+    geoJson: '../data/world-audio-geo.json',
     tileUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
     subdomains: 'abc',
@@ -34,7 +34,7 @@
     , request = W.superagent
     , L = W.L  // Leaflet
     , _ = W._  // Lodash, or Underscore.js
-    , CFG = _.extend(defaults, W.MAP_CONFIG)
+    , CFG = _.extend(defaults, W.MAP_CFG)
     ;
 
   if (typeof CFG.popupTemplate === 'string') {
@@ -58,7 +58,7 @@
   }).addTo(mymap);
 
   request
-    .get(CFG.geoJsonUrl)
+    .get(CFG.geoJson)
     .then(function (response) {
 
     var geo_data = JSON.parse(response.text);
