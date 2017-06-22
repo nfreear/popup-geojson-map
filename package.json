@@ -1,12 +1,13 @@
 {
-  "name": "popup-geojson-map",
+  "name": "geojson-popup",
+  "// Deprecated name": "popup-geojson-map",
   "version": "1.1.0-beta",
-  "description": "Easily create interactive maps, with popups containing structured data, for example, audio players.",
+  "description": "Add GeoJSON-based templated popups to your Leaflet map. See audio-player example.",
   "license": "MIT",
   "main": "src/popup-geojson-map.js",
   "browser": "src/popup-geojson-map.js",
   "author": "Nick Freear {@nfreear}",
-  "keywords": "geojson, map, leaflet, audio, lodash, template, popup, freesound, commons, mapbox",
+  "keywords": "geojson, map, leaflet, audio, lodash, underscore, template, popup, freesound, commons, mapbox, popup-geojson-map",
   "repository": "https://github.com/nfreear/popup-geojson-map",
   "bugs": "https://github.com/nfreear/popup-geojson-map/issues",
   "dependencies": {
