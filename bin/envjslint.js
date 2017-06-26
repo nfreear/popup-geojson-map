@@ -8,7 +8,7 @@ const envfile = '.env.js';
 const fs = require('fs');
 var script = fs.readFileSync(envfile, 'utf8');
 
-//script = script.replace(/(.*=|^\/\/.*|^;.*)/g, '');
+// script = script.replace(/(.*=|^\/\/.*|^;.*)/g, '');
 script = script.replace(/[\n;]/g, '').replace(/.*=/, '');
 
 const obj = JSON.parse(script);

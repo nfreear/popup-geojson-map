@@ -1,7 +1,7 @@
 
 [![Build status: Travis-CI][travis-icon]][travis-ci]
 
-# popup-geojson-map.js
+# nfreear / geojson-popup
 
 Add GeoJSON-based templated popups to a Leaflet map. See the audio-player example(s).
 
@@ -24,19 +24,16 @@ Example data & audio files:
 
 ## Rename
 
-popup-geojson-map
-geojson-popup
-json-map-popup
-
-I'm renaming the NPM package from `popup-geojson-map` to the clearer `geojson-popup`.
+I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer [`geojson-popup`][npm].
 (I'll probably re-name the GitHub repo. too.) Sorry for any hassle!
 
 ## Build & test
 
 ```sh
-npm i popup-geojson-map
+git clone https://github.com/nfreear/popup-geojson-map geojson-popup
+cd geojson-popup
+npm install && npm run build && npm test
 npm start
-npm test
 ```
 
 ## Usage
@@ -53,7 +50,7 @@ npm test
 
 <script> MAP_CFG = { geoJson: 'data/world-audio-geo.json' } </script>
 
-<script src="https://unpkg.com/popup-geojson-map@1.1.0-beta#..js"></script>
+<script src="https://unpkg.com/geojson-popup@2.0.0-beta#._.js"></script>
 ```
 
 GeoJSON:
@@ -76,7 +73,7 @@ GeoJSON:
 
 ---
 
-* NPM:    [popup-geojson-map][npm]
+* NPM:    [geojson-popup][npm]
 * GitHub: [nfreear/popup-geojson-map][]
 * Gist:   [nfreear/fd10..][gist]
 
@@ -87,7 +84,8 @@ GeoJSON:
 [MIT]: https://nfreear.mit-license.org/2016-2017 "MIT License | © 2016-2017 Nick Freear (date: 2016-09-26)"
 [travis-icon]: https://travis-ci.org/nfreear/popup-geojson-map.svg
 [travis-ci]: https://travis-ci.org/nfreear/popup-geojson-map "Build status – Travis-CI"
-[npm]: https://npmjs.com/package/popup-geojson-map
+[npm-old]: https://npmjs.com/package/popup-geojson-map
+[npm]: https://npmjs.com/package/geojson-popup
 [nfreear/popup-geojson-map]: https://github.com/nfreear/popup-geojson-map
 [gist]: https://gist.github.com/nfreear/fd1005a2af7a8166862011b8fcb8a821 "Original JS"
 [resume]: https://gist.github.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d "Resume GeoJSON"

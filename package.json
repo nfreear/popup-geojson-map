@@ -1,11 +1,12 @@
 {
   "name": "geojson-popup",
   "// Deprecated name": "popup-geojson-map",
-  "version": "1.1.0-beta",
+  "version": "2.0.0-beta",
   "description": "Add GeoJSON-based templated popups to your Leaflet map. See audio-player example.",
   "license": "MIT",
-  "main": "src/popup-geojson-map.js",
-  "browser": "src/popup-geojson-map.js",
+  "unpkg": "dist/geojson-popup.js",
+  "X-browser": "dist/geojson-popup.js",
+  "main": "index.js",
   "author": "Nick Freear {@nfreear}",
   "keywords": "geojson, map, leaflet, audio, lodash, underscore, template, popup, freesound, commons, mapbox, popup-geojson-map",
   "repository": "https://github.com/nfreear/popup-geojson-map",
@@ -14,12 +15,21 @@
     "lodash.template": "^4.4.0",
     "superagent": "^3.5.2"
   },
+  "peerDependencies": {
+    "leaflet": "^1.0.3"
+  },
   "devDependencies": {
+    "browserify": "^14.4.0",
     "eslint": "^3.19.0",
     "jsonlint-cli": "^1.0.1",
-    "node-static": "^0.7.9"
+    "node-static": "^0.7.9",
+    "replace": "^0.3.0",
+    "semistandard": "^11.0.0",
+    "uglify-js": "^3.0.20",
+    "uncomment-cli": "git://github.com/nfreear/uncomment-cli.git#86d0bbc129"
   },
   "files": [
+    "dist/",
     "src/",
     "data/",
     "example/"
@@ -28,15 +38,21 @@
     "node": ">= 4.0.0"
   },
   "scripts": {
+    "build": "bin/_ver.js && npm run browserify && npm run uglify",
+    "browserify": "browserify index.js | _unc > dist/geojson-popup.js",
+    "uglify": "uglifyjs dist/geojson-popup.js --comments=/^[!]/ -mco dist/geojson-popup.min.js",
     "copy-env": "cp -n .env-example.js .env.js",
-    "start": "node bin/index.js",
+    "start": "bin/server.js",
     "envjslint-ci": "node bin/envjslint.js",
     "envjslint": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}' | jsonlint-cli",
     "jsonlint": "jsonlint-cli data/*",
-    "test": "eslint src/*.js bin/*.js !.env.js"
+    "semi": "semistandard",
+    "test": "eslint index.js src/*.js bin/*.js !.env.js"
   },
   "eslintConfig": {
-    "parserOptions": { "ecmaVersion": 6 },
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
     "__env": {
       "browser": true
     },
@@ -49,5 +65,8 @@
       "curly": "error",
       "semi": "error"
     }
+  },
+  "semistandard": {
+    "ignore": "dist/"
   }
 }

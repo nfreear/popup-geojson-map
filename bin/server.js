@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*!
   Web server for examples.
 
@@ -13,20 +15,18 @@
   © Nick Freear, 27 October 2016.
 */
 
-
 /* global require, console, __dirname */
 
 const PORT = 9000;
-const static = require('node-static');
+const nodeStatic = require('node-static');
 const path = require('path').join;
-const fileServer = new static.Server(path(__dirname, '..'));
+const fileServer = new nodeStatic.Server(path(__dirname, '..'));
 
 require('http').createServer(function (request, response) {
-    request.addListener('end', function () {
-        fileServer.serve(request, response);
-    }).resume();
-}).listen(PORT); //(8080);
-
+  request.addListener('end', function () {
+    fileServer.serve(request, response);
+  }).resume();
+}).listen(PORT); // (8080);
 
 console.info('Web server running...');
 console.info('Visit: http://localhost:%d/example/world.html', PORT);

@@ -1,12 +1,12 @@
 language: node_js
 node_js:
   - "4"
+  - "6"
 
 git:
-  depth: 5
+  depth: 8
 
 install:
-  #- npm install -g npm
   - npm install
   - npm run copy-env
 

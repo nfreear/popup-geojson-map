@@ -10,4 +10,11 @@ npm-debug.log
 !example/resume.html
 !example/world.html
 
+dist/*
+!dist/geojson-popup.js
+
+bin/_unc.js
+npm-deprecate*
+uncomment-*
+
 #End.
