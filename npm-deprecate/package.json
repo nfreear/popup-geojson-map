@@ -1,22 +1,12 @@
 {
   "name": "popup-geojson-map",
   "// Deprecated name": "popup-geojson-map",
-  "version": "1.0.0-rc.1",
+  "version": "1.0.0-rc.2",
   "homepage": "https://npmjs.com/package/geojson-popup",
   "description": "WARNING: This project has been renamed to geojson-popup. Please install using geojson-popup instead.",
   "license": "MIT",
-  "main": "src/popup-geojson-map.js",
-  "browser": "src/popup-geojson-map.js",
+  "main": "index.js",
   "author": "Nick Freear {@nfreear}",
-  "keywords": "geojson, map, leaflet, audio, lodash, underscore, template, popup, freesound, commons, mapbox, popup-geojson-map",
-  "repository": "https://github.com/nfreear/popup-geojson-map",
-  "bugs": "https://github.com/nfreear/popup-geojson-map/issues",
-  "dependencies": { },
-  "devDependencies": { },
-  "files": [ ],
-  "engines": {
-    "node": ">= 4.0.0"
-  },
-  "scripts": { },
-  "eslintConfig": { }
+  "keywords": "geojson, map, leaflet, lodash, underscore, popup, mapbox, popup-geojson-map, geojson-popup",
+  "repository": "https://github.com/nfreear/popup-geojson-map"
 }
