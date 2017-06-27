@@ -11,6 +11,7 @@
   "keywords": "geojson, map, leaflet, audio, lodash, underscore, template, popup, freesound, commons, mapbox, popup-geojson-map",
   "repository": "https://github.com/nfreear/popup-geojson-map",
   "bugs": "https://github.com/nfreear/popup-geojson-map/issues",
+  "homepage": "http://nick.freear.org.uk/2017/06/27/geojson-popup-leaflet.html?utm_source=npm",
   "dependencies": {
     "lodash.template": "^4.4.0",
     "superagent": "^3.5.2"

@@ -4,7 +4,7 @@
   "x-deprecated-time": "2017-06-26T13:38:58.000Z",
   "version": "1.0.0-rc.3",
   "homepage": "https://npmjs.com/package/geojson-popup",
-  "description": "WARNING: This project has been renamed to 'geojson-popup'. Please install using 'geojson-popup' instead.",
+  "description": "(WARNING: This project has been renamed to 'geojson-popup'. Please install using 'geojson-popup' instead.)",
   "license": "MIT",
   "main": "index.js",
   "author": "Nick Freear {@nfreear}",
