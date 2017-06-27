@@ -11,7 +11,6 @@ var lodash = {
   template: require('lodash.template'),
   extend: require('./src/utils').extend
 };
-var window = global;
-// var window = window;
+var window = global || window;
 
 require('./src/popup-geojson-map')(window, superagent, lodash);

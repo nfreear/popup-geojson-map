@@ -43,7 +43,7 @@ module.exports = function (WIN, superagent, lodashish) {
   W.console.debug('Map config:', CFG); // , JSON, _, request);
 
   var mymap = L.map(CFG.mapId).setView(CFG.latLng, CFG.zoom);
-  var popup_template = _.template(CFG.popupTemplate, null, CFG.templateSettings);
+  var popupTemplateFn = _.template(CFG.popupTemplate, null, CFG.templateSettings);
   var accessToken = _.template(CFG.accessToken);
 
   L.tileLayer(CFG.tileUrl, {
@@ -58,22 +58,21 @@ module.exports = function (WIN, superagent, lodashish) {
   request
     .get(CFG.geoJson)
     .then(function (response) {
-      var geo_data = JSON.parse(response.text);
+      var geoData = JSON.parse(response.text);
 
-      W.console.debug('GeoJSON:', geo_data);
+      W.console.debug('GeoJSON:', geoData);
 
-      L.geoJson(geo_data, {
+      L.geoJson(geoData, {
         onEachFeature: function (feature, layer) {
           if (feature.properties && feature.properties[ CFG.checkProperty ]) {
-            layer.bindPopup(popup_template(feature.properties));
-          }
-          else if (feature.properties && feature.properties.popupContent) {
+            layer.bindPopup(popupTemplateFn(feature.properties));
+          } else if (feature.properties && feature.properties.popupContent) {
             layer.bindPopup(feature.properties.popupContent);
           }
         }
-      })
-      .addTo(mymap);
-    }, function (error) {
+      }).addTo(mymap);
+    },
+    function (error) {
       W.console.error('Superagent HTTP error.', error);
       W.alert('HTTP error. ' + error);
     });

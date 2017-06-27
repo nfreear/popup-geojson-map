@@ -46,15 +46,14 @@
     "envjslint-ci": "node bin/envjslint.js",
     "envjslint": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}' | jsonlint-cli",
     "jsonlint": "jsonlint-cli data/*",
-    "semi": "semistandard",
-    "test": "eslint index.js src/*.js bin/*.js !.env.js"
+    "test": "semistandard && eslint index.js src/*.js bin/*.js !.env.js"
   },
   "eslintConfig": {
     "parserOptions": {
       "ecmaVersion": 6
     },
-    "__env": {
-      "browser": true
+    "env": {
+      "node": true
     },
     "globals": {
       "window": false

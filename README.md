@@ -1,5 +1,10 @@
 
-[![Build status: Travis-CI][travis-icon]][travis-ci]
+[![Build status — Travis-CI][travis-icon]][travis]
+[![simple-speak on Npmjs][npm-icon]][npm]
+[![js-semistandard-style][semi-icon]][semi]
+[![License][license-icon]][mit]
+[![Total downloads - NPMJS.com][downl-icon]][npm]
+
 
 # nfreear / geojson-popup
 
@@ -83,7 +88,7 @@ GeoJSON:
 
 [MIT]: https://nfreear.mit-license.org/2016-2017 "MIT License | © 2016-2017 Nick Freear (date: 2016-09-26)"
 [travis-icon]: https://travis-ci.org/nfreear/popup-geojson-map.svg
-[travis-ci]: https://travis-ci.org/nfreear/popup-geojson-map "Build status – Travis-CI"
+[travis]: https://travis-ci.org/nfreear/popup-geojson-map "Build status – Travis-CI"
 [npm-old]: https://npmjs.com/package/popup-geojson-map
 [npm]: https://npmjs.com/package/geojson-popup
 [nfreear/popup-geojson-map]: https://github.com/nfreear/popup-geojson-map
@@ -103,5 +108,12 @@ GeoJSON:
   "'This page shows mini maps for all the layers available in Leaflet-providers.'"
 [Mapbox]: https://www.mapbox.com/
 [NLS]: http://maps.nls.uk/projects/api/ "National Library of Scotland - Historic Maps API."
+
+[semi]: https://github.com/Flet/semistandard
+[semi-icon]: https://img.shields.io/badge/code_style-semistandard-brightgreen.svg
+  "Javascript coding style — 'semistandard'"
+[npm-icon]: https://img.shields.io/npm/v/geojson-popup.svg "Latest version ~ on NPM"
+[license-icon]: https://img.shields.io/npm/l/geojson-popup.svg
+[downl-icon]: https://img.shields.io/npm/dt/geojson-popup.svg "Count of total downloads ~NPM"
 
 [end]: //end
