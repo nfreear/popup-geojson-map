@@ -1,6 +1,6 @@
 
 [![Build status — Travis-CI][travis-icon]][travis]
-[![simple-speak on Npmjs][npm-icon]][npm]
+[![geojson-popup on Npmjs][npm-icon]][npm]
 [![js-semistandard-style][semi-icon]][semi]
 [![License][license-icon]][mit]
 [![Total downloads - NPMJS.com][downl-icon]][npm]
@@ -8,29 +8,9 @@
 
 # nfreear / geojson-popup
 
-Add GeoJSON-based templated popups to a Leaflet map. See the audio-player example(s).
+Add GeoJSON-based templated popups to a [Leaflet][] map. See the audio-player example(s).
 
 Easily create interactive maps, with popups containing structured data, for example, audio players.
-
-Software & specs:
-* [GeoJSON][]
-* [Leaflet.JS][]
-* [Lodash][] or [Underscore.js][]
-* [SuperAgent][]
-
-Map tiles:
-* [Leaflet providers][prov] — _default / free._
-* [Mapbox][]
-* [National Library of Scotland - Historic Maps][NLS]
-
-Example data & audio files:
-* [Freesound][]
-* [Commons][]
-
-## Rename
-
-I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer [`geojson-popup`][npm].
-(I'll probably re-name the GitHub repo. too.) Sorry for any hassle!
 
 ## Build & test
 
@@ -43,6 +23,8 @@ npm start
 
 ## Usage
 
+HTML containing a template, with placeholders, `title` and `audio_url`
+
 ```html
 <p id="mapid"></p>
 
@@ -53,12 +35,13 @@ npm start
   </div>
 </script>
 
-<script> MAP_CFG = { geoJson: 'data/world-audio-geo.json' } </script>
+<script> MAP_CFG = { geoJson: '{cdn}/data/world-audio-geo.json' } </script>
 
 <script src="https://unpkg.com/geojson-popup@2.0.0-beta#._.js"></script>
 ```
 
-GeoJSON:
+GeoJSON, with properties corresponding to the template placeholders, `title` and `audio_url`:
+
 ```json
 "features": [
   {
@@ -74,6 +57,28 @@ GeoJSON:
   }
 ]
 ```
+
+---
+
+Software & specs:
+* [GeoJSON][]
+* [Leaflet][]
+* [Lodash.template][] - _bundled_
+* [SuperAgent][] - _bundled_
+
+Map tiles:
+* [Leaflet providers][prov] — _default / free._
+* [Mapbox][]
+* [National Library of Scotland - Historic Maps][NLS]
+
+Sources for example data & audio files:
+* [Freesound][]
+* [Commons][]
+
+## Rename
+
+I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer [`geojson-popup`][npm].
+(I'll probably re-name the GitHub repo. too.) _Sorry for any hassle!_
 
 
 ---
@@ -97,7 +102,7 @@ GeoJSON:
 
 [RFC]: https://tools.ietf.org/html/rfc7946 "The GeoJSON Format, August 2016."
 [GeoJSON]: http://geojson.org/
-[Leaflet.JS]: http://leafletjs.com/examples/geojson.html
+[Leaflet]: http://leafletjs.com/examples/geojson.html
 [SuperAgent]: https://visionmedia.github.io/superagent/
 [Superagent-X]: http://smalljs.org/ajax/superagent/
 [Lodash]: https://lodash.com/

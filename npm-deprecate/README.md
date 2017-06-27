@@ -1,15 +1,16 @@
 
 [![Build status: Travis-CI][travis-icon]][travis-ci]
+[![geojson-popup on Npmjs][npm-icon]][npm]
 
 # popup-geojson-map
 
 > WARNING: This project has been renamed to [geojson-popup][npm].
-> Please install using geojson-popup instead.
+> Please install using __geojson-popup__ instead.
 
 ## Renamed
 
 I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer [`geojson-popup`][npm].
-(I'll probably re-name the GitHub repo. too.) Sorry for any hassle!
+(I'll probably re-name the GitHub repo. too.) _Sorry for any hassle!_
 
 ---
 
@@ -23,8 +24,9 @@ Easily create interactive maps, with popups containing structured data, for exam
 &copy; 2016-2017 Nick Freear | License: [MIT][].
 
 
-[npm-old]: https://npmjs.com/package/popup-geojson-map
-[npm]: https://npmjs.com/package/geojson-popup
+[npm-old]: https://npmjs.com/package/popup-geojson-map "Old"
+[npm]: https://npmjs.com/package/geojson-popup "Renamed: 'geojson-popup' ~ on NPM"
+[npm-icon]: https://img.shields.io/npm/v/geojson-popup.svg
 
 [gh]: https://github.com/nfreear/popup-geojson-map
 [nfreear/popup-geojson-map]: https://github.com/nfreear/popup-geojson-map

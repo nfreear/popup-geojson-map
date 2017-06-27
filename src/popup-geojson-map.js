@@ -4,7 +4,7 @@
   © Nick Freear, 2016-09-26 | License: MIT.
 */
 
-module.exports = function (WIN, superagent, lodashish) {
+module.exports = function (WIN, superagent, lodashish, VERSION) {
   'use strict';
 
   var defaults = {
@@ -17,7 +17,7 @@ module.exports = function (WIN, superagent, lodashish) {
     popupTemplate: '#popup-template',
     templateSettings: {},
     checkProperty: 'audio_url',
-    geoJson: '../data/world-audio-geo.json',
+    geoJson: '{cdn}/data/world-audio-geo.json',
     tileUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
     subdomains: 'abc',
@@ -26,6 +26,8 @@ module.exports = function (WIN, superagent, lodashish) {
     // tileUrl: 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}'
     // subdomains: '0123',
     // attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    lodashish: true,
+    cdn: 'https://unpkg.com/geojson-popup@' + VERSION, // Was: '@1.1.0-beta'
     accessToken: '<%= ENV.ACCESS_TOKEN %>' // No access token required for OpenStreetMap!
   };
 
@@ -33,14 +35,16 @@ module.exports = function (WIN, superagent, lodashish) {
   var JSON = W.JSON;
   var L = W.L;
   var request = superagent;
-  var _ = lodashish;
-  var CFG = _.extend(defaults, W.MAP_CFG);
+  var CFG = lodashish.extend(defaults, W.MAP_CFG); // Order is significant!
+  var _ = CFG.lodashish ? lodashish : W._;
+
+  CFG.version = VERSION;
 
   if (typeof CFG.popupTemplate === 'string') {
     CFG.popupTemplate = W.document.querySelector(CFG.popupTemplate).innerText;
   }
 
-  W.console.debug('Map config:', CFG); // , JSON, _, request);
+  W.console.debug('Map config:', CFG);
 
   var mymap = L.map(CFG.mapId).setView(CFG.latLng, CFG.zoom);
   var popupTemplateFn = _.template(CFG.popupTemplate, null, CFG.templateSettings);
@@ -56,7 +60,7 @@ module.exports = function (WIN, superagent, lodashish) {
   }).addTo(mymap);
 
   request
-    .get(CFG.geoJson)
+    .get(lodashish.cdn(CFG))
     .then(function (response) {
       var geoData = JSON.parse(response.text);
 
@@ -73,7 +77,7 @@ module.exports = function (WIN, superagent, lodashish) {
       }).addTo(mymap);
     },
     function (error) {
-      W.console.error('Superagent HTTP error.', error);
-      W.alert('HTTP error. ' + error);
+      W.console.error('Superagent HTTP error.', error, CFG.geoJson);
+      // W.alert('HTTP error. ' + error);
     });
 };

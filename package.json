@@ -2,7 +2,7 @@
   "name": "geojson-popup",
   "// Deprecated name": "popup-geojson-map",
   "version": "2.0.0-beta",
-  "description": "Add GeoJSON-based templated popups to your Leaflet map. See audio-player example.",
+  "description": "Add GeoJSON-based templated popups to your Leaflet map. See the audio-player example.",
   "license": "MIT",
   "unpkg": "dist/geojson-popup.js",
   "X-browser": "dist/geojson-popup.js",
@@ -21,6 +21,7 @@
   "devDependencies": {
     "browserify": "^14.4.0",
     "eslint": "^3.19.0",
+    "exorcist": "^0.4.0",
     "jsonlint-cli": "^1.0.1",
     "node-static": "^0.7.9",
     "replace": "^0.3.0",
@@ -29,7 +30,9 @@
     "uncomment-cli": "git://github.com/nfreear/uncomment-cli.git#86d0bbc129"
   },
   "files": [
-    "dist/",
+    "dist/geojson-popup.js",
+    "dist/*.js.map",
+    "dist/*.min.js",
     "src/",
     "data/",
     "example/"
@@ -39,7 +42,7 @@
   },
   "scripts": {
     "build": "bin/_ver.js && npm run browserify && npm run uglify",
-    "browserify": "browserify index.js | _unc > dist/geojson-popup.js",
+    "browserify": "browserify index.js --debug | exorcist dist/geojson-popup.js.map | _unc > dist/geojson-popup.js",
     "uglify": "uglifyjs dist/geojson-popup.js --comments=/^[!]/ -mco dist/geojson-popup.min.js",
     "copy-env": "cp -n .env-example.js .env.js",
     "start": "bin/server.js",

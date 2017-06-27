@@ -6,11 +6,15 @@
 
 'use strict';
 
-var superagent = require('superagent');
-var lodash = {
-  template: require('lodash.template'),
-  extend: require('./src/utils').extend
-};
-var window = global || window;
+var VERSION = '2.0.0-beta'; // <Auto>
 
-require('./src/popup-geojson-map')(window, superagent, lodash);
+var superagent = require('superagent');
+var utils = require('./src/utils');
+var lodashish = {
+  template: require('lodash.template'),
+  extend: utils.extend,
+  cdn: utils.cdn
+};
+var window = global; // || window;
+
+require('./src/popup-geojson-map')(window, superagent, lodashish, VERSION);

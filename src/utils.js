@@ -1,6 +1,19 @@
+/**
+ *  Utility functions.
+ *
+ *  © Nick Freear, 2017 | License: MIT.
+ */
 
 module.exports = {
-  extend: extend
+
+  extend: extend,
+
+  cdn: function (CFG) {
+    var orig = CFG.geoJsonOrig = CFG.geoJson;
+
+    CFG.geoJson = orig.replace('{cdn}', CFG.cdn);
+    return CFG.geoJson;
+  }
 };
 
 // JuhQ (16 July 2015): https://gist.github.com/pbojinov/8f3765b672efec122f66#gistcomment-1493930

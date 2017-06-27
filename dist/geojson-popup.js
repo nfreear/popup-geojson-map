@@ -8,16 +8,21 @@
 
 'use strict';
 
-var superagent = require('superagent');
-var lodash = {
-  template: require('lodash.template'),
-  extend: require('./src/utils').extend
-};
-var window = global || window;
+var VERSION = '2.0.0-beta'; 
 
-require('./src/popup-geojson-map')(window, superagent, lodash);
+var superagent = require('superagent');
+var utils = require('./src/utils');
+var lodashish = {
+  template: require('lodash.template'),
+  extend: utils.extend,
+  cdn: utils.cdn
+};
+var window = global; 
+
+require('./src/popup-geojson-map')(window, superagent, lodashish, VERSION);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"./src/popup-geojson-map":13,"./src/utils":14,"lodash.template":4,"superagent":6}],2:[function(require,module,exports){
 
 
@@ -658,6 +663,7 @@ var attempt = baseRest(function(func, args) {
 module.exports = template;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"lodash._reinterpolate":3,"lodash.templatesettings":5}],5:[function(require,module,exports){
 (function (global){
 
@@ -782,6 +788,7 @@ function escape(string) {
 module.exports = templateSettings;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
 },{"lodash._reinterpolate":3}],6:[function(require,module,exports){
 
 
@@ -1950,7 +1957,7 @@ exports.cleanHeader = function(header, shouldStripCookie){
   © Nick Freear, 2016-09-26 | License: MIT.
 */
 
-module.exports = function (WIN, superagent, lodashish) {
+module.exports = function (WIN, superagent, lodashish, VERSION) {
   'use strict';
 
   var defaults = {
@@ -1963,7 +1970,7 @@ module.exports = function (WIN, superagent, lodashish) {
     popupTemplate: '#popup-template',
     templateSettings: {},
     checkProperty: 'audio_url',
-    geoJson: '../data/world-audio-geo.json',
+    geoJson: '{cdn}/data/world-audio-geo.json',
     tileUrl: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
     attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>',
     subdomains: 'abc',
@@ -1972,6 +1979,8 @@ module.exports = function (WIN, superagent, lodashish) {
     
     
     
+    lodashish: true,
+    cdn: 'https://unpkg.com/geojson-popup@' + VERSION, 
     accessToken: '<%= ENV.ACCESS_TOKEN %>' 
   };
 
@@ -1979,14 +1988,16 @@ module.exports = function (WIN, superagent, lodashish) {
   var JSON = W.JSON;
   var L = W.L;
   var request = superagent;
-  var _ = lodashish;
-  var CFG = _.extend(defaults, W.MAP_CFG);
+  var CFG = lodashish.extend(defaults, W.MAP_CFG); 
+  var _ = CFG.lodashish ? lodashish : W._;
+
+  CFG.version = VERSION;
 
   if (typeof CFG.popupTemplate === 'string') {
     CFG.popupTemplate = W.document.querySelector(CFG.popupTemplate).innerText;
   }
 
-  W.console.debug('Map config:', CFG); 
+  W.console.debug('Map config:', CFG);
 
   var mymap = L.map(CFG.mapId).setView(CFG.latLng, CFG.zoom);
   var popupTemplateFn = _.template(CFG.popupTemplate, null, CFG.templateSettings);
@@ -2002,7 +2013,7 @@ module.exports = function (WIN, superagent, lodashish) {
   }).addTo(mymap);
 
   request
-    .get(CFG.geoJson)
+    .get(lodashish.cdn(CFG))
     .then(function (response) {
       var geoData = JSON.parse(response.text);
 
@@ -2019,15 +2030,24 @@ module.exports = function (WIN, superagent, lodashish) {
       }).addTo(mymap);
     },
     function (error) {
-      W.console.error('Superagent HTTP error.', error);
-      W.alert('HTTP error. ' + error);
+      W.console.error('Superagent HTTP error.', error, CFG.geoJson);
+      
     });
 };
 
 },{}],14:[function(require,module,exports){
 
+
 module.exports = {
-  extend: extend
+
+  extend: extend,
+
+  cdn: function (CFG) {
+    var orig = CFG.geoJsonOrig = CFG.geoJson;
+
+    CFG.geoJson = orig.replace('{cdn}', CFG.cdn);
+    return CFG.geoJson;
+  }
 };
 
 
@@ -2049,4 +2069,5 @@ function extend () {
 
 
 
-},{}]},{},[1]);
+},{}]},{},[1])
+
