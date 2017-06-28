@@ -22,6 +22,7 @@
   "devDependencies": {
     "browserify": "^14.4.0",
     "eslint": "^3.19.0",
+    "eslint-plugin-react": "^6.10.3",
     "exorcist": "^0.4.0",
     "jsonlint-cli": "^1.0.1",
     "node-static": "^0.7.9",
@@ -49,8 +50,8 @@
     "start": "bin/server.js",
     "envjslint-ci": "node bin/envjslint.js",
     "envjslint": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}' | jsonlint-cli",
-    "jsonlint": "jsonlint-cli data/*",
-    "test": "semistandard && eslint index.js src/*.js bin/*.js !.env.js"
+    "jsonl": "jsonlint-cli data/*",
+    "test": "semistandard && eslint index.js src/*.js bin/*.js !.env.js && npm run jsonl"
   },
   "eslintConfig": {
     "parserOptions": {

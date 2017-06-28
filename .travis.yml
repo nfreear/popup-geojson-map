@@ -8,12 +8,11 @@ git:
 
 install:
   - npm install
-  - npm i jsonlint-cli
   - npm run copy-env
 
 script:
+  - npm run build
   - npm test
-  - npm run jsonlint
   - npm run envjslint-ci
 
 after_script:
