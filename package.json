@@ -21,20 +21,17 @@
   },
   "devDependencies": {
     "browserify": "^14.4.0",
-    "eslint": "^3.19.0",
-    "eslint-plugin-react": "^6.10.3",
     "exorcist": "^0.4.0",
     "jsonlint-cli": "^1.0.1",
     "node-static": "^0.7.9",
     "replace": "^0.3.0",
     "semistandard": "^11.0.0",
     "uglify-js": "^3.0.20",
-    "uncomment-cli": "git://github.com/nfreear/uncomment-cli.git#86d0bbc129"
+    "uncomment-cli": "git://github.com/nfreear/uncomment-cli.git#0.9.0"
   },
   "files": [
-    "dist/geojson-popup.js",
-    "dist/*.js.map",
-    "dist/*.min.js",
+    "index.js",
+    "dist/",
     "src/",
     "data/",
     "example/"
@@ -43,7 +40,7 @@
     "node": ">= 4.0.0"
   },
   "scripts": {
-    "build": "bin/_ver.js && npm run browserify && npm run uglify",
+    "build": "rm dist/* && bin/_ver.js && npm run browserify && npm run uglify",
     "browserify": "browserify index.js --debug | exorcist dist/geojson-popup.js.map | _unc > dist/geojson-popup.js",
     "uglify": "uglifyjs dist/geojson-popup.js --comments=/^[!]/ -mco dist/geojson-popup.min.js",
     "copy-env": "cp -n .env-example.js .env.js",
@@ -51,9 +48,10 @@
     "envjslint-ci": "node bin/envjslint.js",
     "envjslint": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}' | jsonlint-cli",
     "jsonl": "jsonlint-cli data/*",
-    "test": "semistandard && eslint index.js src/*.js bin/*.js !.env.js && npm run jsonl"
+    "eslint": "eslint index.js src/*.js bin/*.js !.env.js",
+    "test": "semistandard && npm run jsonl"
   },
-  "eslintConfig": {
+  "X-eslintConfig": {
     "parserOptions": {
       "ecmaVersion": 6
     },
@@ -72,5 +70,9 @@
   },
   "semistandard": {
     "ignore": "dist/"
+  },
+  "//": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-react": "^6.10.3"
   }
 }

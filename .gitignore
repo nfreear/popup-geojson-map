@@ -4,6 +4,7 @@
 .env.js
 node_modules
 npm-debug.log
+package-lock.json
 
 *.html
 !example/historic.html
@@ -13,8 +14,12 @@ npm-debug.log
 dist/*
 !dist/geojson-popup.js
 
+*.png
+
 bin/_unc.js
 npm-deprecate*
 uncomment-*
 
-#End.
+*BAK*
+
+# End.
