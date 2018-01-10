@@ -69,14 +69,14 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
       W.console.debug('GeoJSON:', geoData);
 
       L.geoJson(geoData, {
-        pointToLayer: function (/*geoJsonPoint*/ point, latlng) {
+        pointToLayer: function (/* geoJsonPoint */ point, latlng) {
           if (CFG.icon === 'default') {
             return L.marker(latlng);
           }
 
           var props = point.properties;
           var icon = props[ 'marker-symbol' ];
-          var cls  = props[ 'marker-class' ] || '';
+          var cls = props[ 'marker-class' ] || '';
           var html = props[ 'marker-html' ] || '';
           var clsName = 'icon-{icon} icon-{cls}'.replace('{icon}', icon).replace('{cls}', cls);
 
@@ -86,10 +86,10 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
             return L.marker(latlng, { icon: L.divIcon({ className: clsName, html: html }) });
           }
 
-          var makiIcon = new L.icon({
-            iconSize: [ 18, 18 ], //[ 27, 27 ],
-            iconAnchor: [ 9, 18 ], //[ 13, 27 ],
-            popupAnchor: [ 1, -19 ], //[ 1, -24 ],
+          var makiIcon = L.icon({
+            iconSize: [ 18, 18 ],    // [ 27, 27 ],
+            iconAnchor: [ 9, 18 ],   // [ 13, 27 ],
+            popupAnchor: [ 1, -19 ], // [ 1, -24 ],
             iconUrl: CFG.iconUrl.replace('{icon}', icon),
             className: clsName
           });
