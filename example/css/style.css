@@ -29,6 +29,11 @@ h1,p,pre {
   margin: 1em 2rem;
 }
 
+.ev-charger h1 {
+  font-size: 1.6rem;
+  margin: .25em 2rem;
+}
+
 pre {
   margin-top: 4em;
   padding-top: 1em;
@@ -51,6 +56,25 @@ pre {
 .map.wide {
   height: 350px;
   width: 100%;
+}
+
+.map.large {
+  height: 615px;
+  width: 96%;
+}
+
+.ev-charger .icon-fuel {
+  background-color: #f8b; /* invert(pink) = green */
+  border-radius: 8px;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+  padding: 4px;
+}
+
+.ev-charger .leaflet-popup-content-wrapper,
+.ev-charger .leaflet-popup-tip {
+  background: green;
+  color: #fff;
 }
 
 .index body {

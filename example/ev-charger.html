@@ -1,0 +1,42 @@
+<!doctype html><html lang="en" class="ev-charger"><meta charset="utf-8"><title>EV charger</title>
+
+<link rel="stylesheet" href="css/style.css" />
+
+
+<h1> Electric vehicle charger example </h1>
+
+<p>Example of using the Maki icon set as map markers.</p>
+
+
+<p id="mapid" class="map large"></p>
+
+
+<script type="text/html" id="popup-template">
+  <div class="ev-charger-popup"><h2><%= title %></h2></div>
+</script>
+
+
+<script>
+MAP_CFG = {
+  latLng: [ 52.02425, -0.70874 ],
+  maxZoom: 18,
+  zoom: 17,
+  checkProperty: 'title',
+  geoJson: 'https://rawgit.com/nfreear/d1cb9d672dd33511056fa472c9bde36f/raw/0e806a46491d4049cac478b9caeed444965f609b/open-university-mk7-ev-charging-map.geo.json',
+  icon: 'maki'
+  // opacity: 0.85
+}
+</script>
+
+
+<link href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" rel="stylesheet" />
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+
+<script src="../dist/geojson-popup.js"></script>
+
+
+<pre>
+&copy; 2018 Nick Freear | License: MIT.
+
+</pre>
+</html>
