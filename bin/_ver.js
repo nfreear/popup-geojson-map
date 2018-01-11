@@ -14,8 +14,10 @@ const README = path('/../README.md');
 // const TEST_HTML = path('/../example/world.html');
 const PKG = require('../package.json');
 const VERSION_TAG = PKG.version; // Was: .replace(/\.0(-.+)?/, '$1');
+const LEAFLET_VER = PKG.peerDependencies.leaflet;
 
 console.warn('VERSION_TAG :', VERSION_TAG);
+console.warn('Leaflet JS  :', LEAFLET_VER);
 
 replace({
   paths: [ INDEX_JS ],
@@ -40,6 +42,18 @@ replace({
   count: true,
   recursive: false
 });
+
+replace({
+  paths: [ ex('historic'), ex('resume'), ex('world') ],
+  regex: /leaflet\@\d\.\d\.\d/g,
+  replacement: 'leaflet@' + LEAFLET_VER,
+  count: true,
+  recursive: false
+});
+
+function ex (base) {
+  return require('path').join(__dirname, '../example', base + '.html');
+}
 
 function path (file) {
   return require('path').join(__dirname, file);
