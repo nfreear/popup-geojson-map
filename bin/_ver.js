@@ -36,7 +36,7 @@ replace({
 });
 
 replace({
-  paths: [ README ],  // TEST_HTML ?
+  paths: [ README ], // TEST_HTML ?
   regex: /\/(geojson-popup|popup-geojson-map)(\/|@)(\d\.\d\.\d(-[.\w]+)?)/g,
   replacement: version('/geojson-popup$2%s'),
   count: true,
@@ -44,8 +44,8 @@ replace({
 });
 
 replace({
-  paths: [ ex('historic'), ex('resume'), ex('world') ],
-  regex: /leaflet\@\d\.\d\.\d/g,
+  paths: [ ex('ev-charger'), ex('historic'), ex('resume'), ex('world') ],
+  regex: /leaflet@\d\.\d\.\d/g,
   replacement: 'leaflet@' + LEAFLET_VER,
   count: true,
   recursive: false

@@ -11,7 +11,7 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
     latLng: [ 51.505, -0.09 ], // London, UK!
     zoom: 3,
     minZoom: 2,
-    maxZoom: 12,  // Was: 6, 18,
+    maxZoom: 12, // Was: 6, 18,
     opacity: 1,
     mapId: 'mapid',
     popupTemplate: '#popup-template',
@@ -27,7 +27,7 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
     // subdomains: '0123',
     // attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
     lodashish: true,
-    icon: 'default',  // 'default', 'maki' or 'div'
+    icon: 'default', // 'default', 'maki' or 'div'
     iconUrl: 'https://unpkg.com/@mapbox/maki@4.0.0/icons/{icon}-15.svg',
     cdn: 'https://unpkg.com/geojson-popup@' + VERSION, // Was: '@1.1.0-beta'
     accessToken: '<%= ENV.ACCESS_TOKEN %>' // No access token required for OpenStreetMap!
@@ -87,8 +87,8 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
           }
 
           var makiIcon = L.icon({
-            iconSize: [ 18, 18 ],    // [ 27, 27 ],
-            iconAnchor: [ 9, 18 ],   // [ 13, 27 ],
+            iconSize: [ 18, 18 ], // [ 27, 27 ],
+            iconAnchor: [ 9, 18 ], // [ 13, 27 ],
             popupAnchor: [ 1, -19 ], // [ 1, -24 ],
             iconUrl: CFG.iconUrl.replace('{icon}', icon),
             className: clsName
