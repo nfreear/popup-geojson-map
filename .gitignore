@@ -2,9 +2,9 @@
 
 .env
 .env.js
-node_modules
+node_modules/
 npm-debug.log
-package-lock.json
+# package-lock.json
 
 *.html
 !example/historic.html

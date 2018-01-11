@@ -94,7 +94,7 @@ I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer 
 * Gist:   [nfreear/fd10..][gist]
 
 ---
-&copy; 2016-2017 Nick Freear, | License: [MIT][].
+&copy; 2016-2018 Nick Freear, | License: [MIT][].
 
 
 [blog]: http://nick.freear.org.uk/2017/06/27/geojson-popup-leaflet.html?utm_source=npm
