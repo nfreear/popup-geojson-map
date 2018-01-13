@@ -43,7 +43,7 @@ HTML containing a template, with placeholders, `title` and `audio_url`
 
 <script> MAP_CFG = { geoJson: '{cdn}/data/world-audio-geo.json' } </script>
 
-<script src="https://unpkg.com/geojson-popup@2.0.0-beta#._.js"></script>
+<script src="https://unpkg.com/geojson-popup@2.2.0#._.js"></script>
 ```
 
 GeoJSON, with properties corresponding to the template placeholders, `title` and `audio_url`:
@@ -62,6 +62,40 @@ GeoJSON, with properties corresponding to the template placeholders, `title` and
     }
   }
 ]
+```
+
+### `marker-symbol`
+
+[GeoJSON with `marker-symbol`][ev], and built in support for [Maki icons][maki]:
+
+```html
+<script>
+MAP_CFG = {
+  geoJson: 'https://example.org/...charging-map.geo.json',
+  icon: 'maki' // 'default', 'maki' or 'div'.
+}
+</script>
+```
+
+```json
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-symbol": "fuel",
+        "marker-class": "custom",
+        "marker-html": "<span>HTML</span>",
+        "title": "Estates charging point (7 kW)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [ -0.71138, 52.02565 ]
+      }
+    }
+  ]
+}
 ```
 
 ---
@@ -107,6 +141,7 @@ I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer 
 [rel]: https://github.com/nfreear/popup-geojson-map/releases
 [gist]: https://gist.github.com/nfreear/fd1005a2af7a8166862011b8fcb8a821 "Original JS"
 [resume]: https://gist.github.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d "Resume GeoJSON"
+[ev]: https://gist.github.com/nfreear/d1cb9d672dd33511056fa472c9bde36f "OU ev-charging GeoJSON"
 
 [RFC]: https://tools.ietf.org/html/rfc7946 "The GeoJSON Format, August 2016."
 [GeoJSON]: http://geojson.org/
@@ -122,6 +157,7 @@ I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer 
   "'This page shows mini maps for all the layers available in Leaflet-providers.'"
 [Mapbox]: https://www.mapbox.com/
 [NLS]: http://maps.nls.uk/projects/api/ "National Library of Scotland - Historic Maps API."
+[maki]: https://www.mapbox.com/maki-icons/ "Maki is an icon set made for map designers."
 
 [semi]: https://github.com/Flet/semistandard
 [semi-icon]: https://img.shields.io/badge/code_style-semistandard-brightgreen.svg

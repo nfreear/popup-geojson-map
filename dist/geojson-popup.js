@@ -8,7 +8,7 @@
 
 'use strict';
 
-var VERSION = '2.0.0-beta'; 
+var VERSION = '2.2.0'; 
 
 var superagent = require('superagent');
 var utils = require('./src/utils');
@@ -1964,7 +1964,7 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
     latLng: [ 51.505, -0.09 ], 
     zoom: 3,
     minZoom: 2,
-    maxZoom: 12,  
+    maxZoom: 12, 
     opacity: 1,
     mapId: 'mapid',
     popupTemplate: '#popup-template',
@@ -1980,6 +1980,8 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
     
     
     lodashish: true,
+    icon: 'default', 
+    iconUrl: 'https://unpkg.com/@mapbox/maki@4.0.0/icons/{icon}-15.svg',
     cdn: 'https://unpkg.com/geojson-popup@' + VERSION, 
     accessToken: '<%= ENV.ACCESS_TOKEN %>' 
   };
@@ -2020,6 +2022,33 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
       W.console.debug('GeoJSON:', geoData);
 
       L.geoJson(geoData, {
+        pointToLayer: function ( point, latlng) {
+          if (CFG.icon === 'default') {
+            return L.marker(latlng);
+          }
+
+          var props = point.properties;
+          var icon = props[ 'marker-symbol' ];
+          var cls = props[ 'marker-class' ] || '';
+          var html = props[ 'marker-html' ] || '';
+          var clsName = 'icon-{icon} icon-{cls}'.replace('{icon}', icon).replace('{cls}', cls);
+
+          console.warn('Point:', point);
+
+          if (CFG.icon === 'div') {
+            return L.marker(latlng, { icon: L.divIcon({ className: clsName, html: html }) });
+          }
+
+          var makiIcon = L.icon({
+            iconSize: [ 18, 18 ], 
+            iconAnchor: [ 9, 18 ], 
+            popupAnchor: [ 1, -19 ], 
+            iconUrl: CFG.iconUrl.replace('{icon}', icon),
+            className: clsName
+          });
+          return L.marker(latlng, { icon: makiIcon });
+        },
+
         onEachFeature: function (feature, layer) {
           if (feature.properties && feature.properties[ CFG.checkProperty ]) {
             layer.bindPopup(popupTemplateFn(feature.properties));

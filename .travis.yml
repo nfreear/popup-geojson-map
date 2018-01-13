@@ -1,15 +1,13 @@
 language: node_js
-node_js:
-  #- "4"
-  - "6"
-  - 8
+
+node_js: 8
 
 git:
   depth: 8
 
-install:
-  - npm install
-  - npm run copy-env
+install: npm install
+
+before_script: npm run copy-env
 
 script:
   - npm run build
@@ -20,4 +18,4 @@ after_script:
   #- npm run envjs
   - ls -alh dist/
 
-#End.
+# End.

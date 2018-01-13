@@ -6,7 +6,7 @@
 
 'use strict';
 
-var VERSION = '2.0.0-beta'; // <Auto>
+var VERSION = '2.2.0'; // <Auto>
 
 var superagent = require('superagent');
 var utils = require('./src/utils');
