@@ -1,6 +1,6 @@
 {
   "name": "geojson-popup",
-  "// Deprecated name": "popup-geojson-map",
+  "# Deprecated name": "popup-geojson-map",
   "version": "2.2.0",
   "description": "Add GeoJSON-based templated popups to your Leaflet map. See the audio-player example.",
   "license": "MIT",
@@ -21,14 +21,13 @@
     "@mapbox/maki": "4.0.0"
   },
   "devDependencies": {
-    "browserify": "^14.4.0",
-    "exorcist": "^0.4.0",
-    "jsonlint-cli": "^1.0.1",
-    "node-static": "^0.7.10",
+    "browserify": "^16.2.3",
+    "exorcist": "^1.0.1",
+    "live-server": "^1.2.1",
     "replace": "^1.1.0",
     "semistandard": "^13.0.1",
     "uglify-js": "^3.3.5",
-    "uncomment-cli": "git://github.com/nfreear/uncomment-cli.git#0.9.0"
+    "uncomment-cli": "git+https://github.com/nfreear/uncomment-cli.git#v0.9.0"
   },
   "files": [
     "index.js",
@@ -45,12 +44,13 @@
     "browserify": "browserify index.js --debug | exorcist dist/geojson-popup.js.map | _unc > dist/geojson-popup.js",
     "uglify": "uglifyjs dist/geojson-popup.js --comments=/^[!]/ -mco dist/geojson-popup.min.js",
     "copy-env": "cp -n .env-example.js .env.js",
-    "start": "bin/server.js",
+    "start": "live-server --port=9001 -V",
+    "_OLD_start": "bin/server.js",
     "envjslint-ci": "node bin/envjslint.js",
     "envjslint": "cat .env.js | pcregrep -M '{\\n.*\\n.*\\n}' | jsonlint-cli",
     "jsonl": "jsonlint-cli data/*",
     "eslint": "eslint index.js src/*.js bin/*.js !.env.js",
-    "test": "semistandard && npm run jsonl"
+    "test": "semistandard # && npm run jsonl"
   },
   "X-eslintConfig": {
     "parserOptions": {
@@ -72,8 +72,10 @@
   "semistandard": {
     "ignore": "dist/"
   },
-  "x-build-js-size": "43kB",
-  "//": {
+  "x-build-js-size": "50kB",
+  "#": {
+    "jsonlint-cli": "^1.0.1",
+    "node-static": "^0.7.10",
     "eslint": "^3.19.0",
     "eslint-plugin-react": "^6.10.3"
   }
