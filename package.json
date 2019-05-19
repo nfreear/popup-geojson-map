@@ -11,13 +11,13 @@
   "keywords": "geojson, map, leaflet, audio, lodash, underscore, template, popup, freesound, commons, mapbox, popup-geojson-map",
   "repository": "https://github.com/nfreear/popup-geojson-map",
   "bugs": "https://github.com/nfreear/popup-geojson-map/issues",
-  "homepage": "http://nick.freear.org.uk/2017/06/27/geojson-popup-leaflet.html?utm_source=npm",
+  "homepage": "https://nick.freear.org.uk/2017/06/27/geojson-popup-leaflet.html?utm_source=npm",
   "dependencies": {
     "lodash.template": "^4.4.0",
-    "superagent": "^3.5.2"
+    "superagent": "^5.0.5"
   },
   "peerDependencies": {
-    "leaflet": "1.2.0",
+    "leaflet": "1.5.1",
     "@mapbox/maki": "4.0.0"
   },
   "devDependencies": {
@@ -25,8 +25,8 @@
     "exorcist": "^0.4.0",
     "jsonlint-cli": "^1.0.1",
     "node-static": "^0.7.10",
-    "replace": "^0.3.0",
-    "semistandard": "^12.0.0",
+    "replace": "^1.1.0",
+    "semistandard": "^13.0.1",
     "uglify-js": "^3.3.5",
     "uncomment-cli": "git://github.com/nfreear/uncomment-cli.git#0.9.0"
   },
@@ -38,7 +38,7 @@
     "example/"
   ],
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 11.0"
   },
   "scripts": {
     "build": "rm dist/* && bin/_ver.js && npm run browserify && npm run uglify",

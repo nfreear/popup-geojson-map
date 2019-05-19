@@ -128,29 +128,29 @@ I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer 
 * Gist:   [nfreear/fd10..][gist]
 
 ---
-&copy; 2016-2018 Nick Freear, | License: [MIT][].
+&copy; 2016-2019 Nick Freear, | License: [MIT][].
 
 
-[blog]: http://nick.freear.org.uk/2017/06/27/geojson-popup-leaflet.html?utm_source=npm
-[MIT]: https://nfreear.mit-license.org/2016-2017 "MIT License | © 2016-2017 Nick Freear (date: 2016-09-26)"
+[blog]: https://nick.freear.org.uk/2017/06/27/geojson-popup-leaflet.html?utm_source=npm
+[MIT]: https://nfreear.mit-license.org/2016-2019 "MIT License | © 2016-2019 Nick Freear (date: 2016-09-26)"
 [travis-icon]: https://travis-ci.org/nfreear/popup-geojson-map.svg
 [travis]: https://travis-ci.org/nfreear/popup-geojson-map "Build status – Travis-CI"
 [npm-old]: https://npmjs.com/package/popup-geojson-map
 [npm]: https://npmjs.com/package/geojson-popup
 [nfreear/popup-geojson-map]: https://github.com/nfreear/popup-geojson-map
 [rel]: https://github.com/nfreear/popup-geojson-map/releases
-[gist]: https://gist.github.com/nfreear/fd1005a2af7a8166862011b8fcb8a821 "Original JS"
+[gist]: https://gist.github.com/nfreear/fd1005a2af7a8166862011b8fcb8a821 "Gist: original JS (27-Sep-2016)"
 [resume]: https://gist.github.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d "Resume GeoJSON"
 [ev]: https://gist.github.com/nfreear/d1cb9d672dd33511056fa472c9bde36f "OU ev-charging GeoJSON"
 
 [RFC]: https://tools.ietf.org/html/rfc7946 "The GeoJSON Format, August 2016."
-[GeoJSON]: http://geojson.org/
-[Leaflet]: http://leafletjs.com/examples/geojson.html
+[GeoJSON]: https://geojson.org/
+[Leaflet]: https://leafletjs.com/examples/geojson/ "Using GeoJSON with Leaflet"
 [SuperAgent]: https://visionmedia.github.io/superagent/
 [Superagent-X]: http://smalljs.org/ajax/superagent/
 [Lodash]: https://lodash.com/
 [_tpl]: https://npmjs.com/package/lodash.template
-[Underscore.js]: http://underscorejs.org/
+[Underscore.js]: https://underscorejs.org/
 [Freesound]: https://freesound.org/search/?q=metro "Freesound search: 'metro'"
 [Commons]: https://commons.wikimedia.org/wiki/Category:Audio_files_of_music
 [prov]: https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -167,4 +167,4 @@ I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer 
 [downl-icon]: https://img.shields.io/npm/dt/geojson-popup.svg "Count of total downloads ~NPM"
 
 <!-- Easily create interactive maps, with popups containing structured data, for example, audio players. -->
-[end]: //end
+[End]: //.

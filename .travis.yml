@@ -1,11 +1,13 @@
 language: node_js
 
-node_js: 8
+node_js: 11
+
+cache: npm
 
 git:
   depth: 8
 
-install: npm install
+# install: npm ci
 
 before_script: npm run copy-env
 
@@ -17,5 +19,7 @@ script:
 after_script:
   #- npm run envjs
   - ls -alh dist/
+  - npm audit
+  - npm outdated
 
 # End.
