@@ -1,7 +1,7 @@
 {
   "name": "geojson-popup",
   "# Deprecated name": "popup-geojson-map",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Add GeoJSON-based templated popups to your Leaflet map. See the audio-player example.",
   "license": "MIT",
   "unpkg": "dist/geojson-popup.js",
@@ -17,7 +17,7 @@
     "superagent": "^5.3.1"
   },
   "peerDependencies": {
-    "leaflet": "1.5.1",
+    "leaflet": "1.7.1",
     "@mapbox/maki": "4.0.0"
   },
   "devDependencies": {
