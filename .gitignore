@@ -6,7 +6,7 @@ node_modules/
 npm-debug.log
 # package-lock.json
 
-*.html
+# *.html
 !example/ev-charger.html
 !example/historic.html
 !example/resume.html

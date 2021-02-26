@@ -43,7 +43,7 @@ HTML containing a template, with placeholders, `title` and `audio_url`
 
 <script> MAP_CFG = { geoJson: '{cdn}/data/world-audio-geo.json' } </script>
 
-<script src="https://unpkg.com/geojson-popup@2.2.0#._.js"></script>
+<script src="https://unpkg.com/geojson-popup@2.3.0#._.js"></script>
 ```
 
 GeoJSON, with properties corresponding to the template placeholders, `title` and `audio_url`:
@@ -128,7 +128,7 @@ I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer 
 * Gist:   [nfreear/fd10..][gist]
 
 ---
-&copy; 2016-2019 Nick Freear, | License: [MIT][].
+&copy; 2016-2021 Nick Freear, | License: [MIT][].
 
 
 [blog]: https://nick.freear.org.uk/2017/06/27/geojson-popup-leaflet.html?utm_source=npm
