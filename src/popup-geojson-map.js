@@ -4,8 +4,14 @@
   © Nick Freear, 2016-09-26 | License: MIT.
 */
 
-module.exports = function (WIN, /* superagent, */ lodashish, VERSION) {
+module.exports = (WIN, lodashish, VERSION) => {
   'use strict';
+
+  WIN = WIN || window;
+
+  const L = WIN.L; // Leaflet
+  const fetch = window.fetch;
+  const ENV = WIN.ENV || { ENV: {} };
 
   const defaults = {
     latLng: [51.505, -0.09], // London, UK!
@@ -29,25 +35,20 @@ module.exports = function (WIN, /* superagent, */ lodashish, VERSION) {
     lodashish: true,
     icon: 'default', // 'default', 'maki' or 'div'
     iconUrl: 'https://unpkg.com/@mapbox/maki@4.0.0/icons/{icon}-15.svg',
-    cdn: 'https://unpkg.com/geojson-popup@' + VERSION, // Was: '@1.1.0-beta'
+    cdn: 'https://unpkg.com/geojson-popup@' + VERSION,
     accessToken: '<%= ENV.ACCESS_TOKEN %>' // No access token required for OpenStreetMap!
   };
 
-  const W = WIN || window;
-  // const JSON = W.JSON;
-  const L = W.L;
-  const fetch = window.fetch;
-  // const request = superagent;
-  const CFG = lodashish.extend(defaults, W.MAP_CFG); // Order is significant!
-  const _ = CFG.lodashish ? lodashish : W._;
+  const CFG = lodashish.extend(defaults, WIN.MAP_CFG); // Order is significant!
+  const _ = CFG.lodashish ? lodashish : WIN._;
 
   CFG.version = VERSION;
 
   if (typeof CFG.popupTemplate === 'string') {
-    CFG.popupTemplate = W.document.querySelector(CFG.popupTemplate).innerText;
+    CFG.popupTemplate = document.querySelector(CFG.popupTemplate).innerText;
   }
 
-  W.console.debug('Map config:', CFG);
+  console.debug('Map config:', CFG);
 
   const mymap = L.map(CFG.mapId).setView(CFG.latLng, CFG.zoom);
   const popupTemplateFn = _.template(CFG.popupTemplate, null, CFG.templateSettings);
@@ -59,7 +60,7 @@ module.exports = function (WIN, /* superagent, */ lodashish, VERSION) {
     maxZoom: CFG.maxZoom,
     minZoom: CFG.minZoom,
     // Not needed! //id: 'your.mapbox.project.id',
-    accessToken: accessToken(W.ENV || { ENV: {} })
+    accessToken: accessToken(ENV)
   }).addTo(mymap);
 
   fetch(lodashish.cdn(CFG))
@@ -68,7 +69,7 @@ module.exports = function (WIN, /* superagent, */ lodashish, VERSION) {
       console.debug('GeoJSON:', geoData);
 
       L.geoJson(geoData, {
-        pointToLayer: function (/* geoJsonPoint */ point, latlng) {
+        pointToLayer: (/* geoJsonPoint */ point, latlng) => {
           if (CFG.icon === 'default') {
             return L.marker(latlng);
           }
@@ -95,7 +96,7 @@ module.exports = function (WIN, /* superagent, */ lodashish, VERSION) {
           return L.marker(latlng, { icon: makiIcon });
         },
 
-        onEachFeature: function (feature, layer) {
+        onEachFeature: (feature, layer) => {
           if (feature.properties && feature.properties[CFG.checkProperty]) {
             layer.bindPopup(popupTemplateFn(feature.properties));
           } else if (feature.properties && feature.properties.popupContent) {

@@ -8,7 +8,6 @@
 
 const VERSION = '2.3.0'; // <Auto>
 
-// WAS: const superagent = require('superagent');
 const utils = require('./src/utils');
 const lodashish = {
   template: require('lodash.template'),
@@ -17,4 +16,4 @@ const lodashish = {
 };
 const window = global; // || window;
 
-require('./src/popup-geojson-map')(window, /* superagent, */ lodashish, VERSION);
+require('./src/popup-geojson-map')(window, lodashish, VERSION);

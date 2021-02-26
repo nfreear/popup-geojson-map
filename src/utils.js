@@ -8,7 +8,7 @@ module.exports = {
 
   extend: extend,
 
-  cdn: function (CFG) {
+  cdn: (CFG) => {
     const orig = CFG.geoJsonOrig = CFG.geoJson;
 
     CFG.geoJson = orig.replace('{cdn}', CFG.cdn);
@@ -32,11 +32,3 @@ function extend () {
   }
   return extended;
 }
-
-/* function replaceObj (str, mapObj) {
-  var re = new RegExp(Object.keys(mapObj).join('|'), 'g'); // Was: "gi".
-
-  return str.replace(re, function (matched) {
-    return mapObj[ matched ]; // Was: matched.toLowerCase().
-  });
-} */
