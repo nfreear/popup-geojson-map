@@ -1,0 +1,80 @@
+{
+  "#": [
+    "Example of a CV or résumé for a globe-trotting chef, based on a world map!",
+    "https://gist.github.com/nfreear/cceecc6e1cabdf8f8f4302aaed10923d"
+  ],
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Employer": "Sofitel Hyland Shanghai, China.",
+        "Job title": "Sou Chef",
+        "Period": "2001 - 2003",
+        "Summary": "This was my first job after food college. I learned lots about Chinese culture and food.",
+        "url": "https://www.google.com/maps/place/Nanjing+Road/@31.2357851,121.4802126,19.93z/",
+        "marker-symbol": "lodging",
+        "marker-size": "medium",
+        "marker-color": "6a94c4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4802126,
+          31.2357851
+        ]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "Employer": "Novotel Paris Gare de Lyon, France.",
+        "Job title": "Head Chef",
+        "Period": "2003-2008",
+        "Summary": "I supervised the re-development of the restaurants in this long-established hotel. Under my stewardship, the restaurants went from 32% to 57% mean occupancy, over the course of 24 months",
+        "url": "https://google.com/maps/place/Novotel+Paris+Gare+de+Lyon/@48.8453195,2.3732829,17z/",
+        "marker-symbol": "restaurant",
+        "marker-size": "large",
+        "marker-color": "c48d6a"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.3732829,
+          48.8453195
+        ]
+      }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "Employer": "British Embassy, Washington DC, USA.",
+        "Job title": "Head Chef",
+        "Period": "2009-2012",
+        "Summary": "We cater for everything from intimate meals for the ambassador and her family, through to formal banquets for visiting dignitaries with complex dietary requirements.",
+        "url": "https://google.com/maps/place/British+Embassy/@38.9202794,-77.0651596,17z/",
+        "marker-symbol": "commercial",
+        "marker-size": "large",
+        "marker-color": "c4ba6a",
+        "marker-color-x": "af6ac4"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0651596,
+          38.9202794
+        ]
+      }
+    }
+  ],
+
+  "x-useful-resources": [
+    "https://en.support.wordpress.com/shortcodes/#miscellaneous",
+    "https://github.com/blog/1528-there-s-a-map-for-that",
+    "https://help.github.com/articles/mapping-geojson-files-on-github/",
+    "https://mapbox.com/maki-icons/",
+    "https://sessions.edu/color-calculator/"
+  ]
+}
