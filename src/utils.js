@@ -9,7 +9,7 @@ module.exports = {
   extend: extend,
 
   cdn: function (CFG) {
-    var orig = CFG.geoJsonOrig = CFG.geoJson;
+    const orig = CFG.geoJsonOrig = CFG.geoJson;
 
     CFG.geoJson = orig.replace('{cdn}', CFG.cdn);
     return CFG.geoJson;
@@ -18,15 +18,15 @@ module.exports = {
 
 // JuhQ (16 July 2015): https://gist.github.com/pbojinov/8f3765b672efec122f66#gistcomment-1493930
 function extend () {
-  var extended = {};
-  var key;
-  var prop;
+  const extended = {};
+  let key;
+  let prop;
 
   for (key in arguments) {
-    var argument = arguments[ key ];
+    const argument = arguments[key];
     for (prop in argument) {
       if (Object.prototype.hasOwnProperty.call(argument, prop)) {
-        extended[ prop ] = argument[ prop ];
+        extended[prop] = argument[prop];
       }
     }
   }

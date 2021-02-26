@@ -20,7 +20,7 @@ console.warn('VERSION_TAG :', VERSION_TAG);
 console.warn('Leaflet JS  :', LEAFLET_VER);
 
 replace({
-  paths: [ INDEX_JS ],
+  paths: [INDEX_JS],
   regex: /VERSION = '.+';(.+Auto.)?/,
   replacement: version('VERSION = \'%s\'; // <Auto>'),
   count: true,
@@ -28,7 +28,7 @@ replace({
 });
 
 replace({
-  paths: [ INDEX_JS ],
+  paths: [INDEX_JS],
   regex: /@version \d\.\d\.\d(-[.\w]+)?/,
   replacement: version('@version %s'),
   count: true,
@@ -36,7 +36,7 @@ replace({
 });
 
 replace({
-  paths: [ README ], // TEST_HTML ?
+  paths: [README], // TEST_HTML ?
   regex: /\/(geojson-popup|popup-geojson-map)(\/|@)(\d\.\d\.\d(-[.\w]+)?)/g,
   replacement: version('/geojson-popup$2%s'),
   count: true,
@@ -44,7 +44,7 @@ replace({
 });
 
 replace({
-  paths: [ ex('ev-charger'), ex('historic'), ex('resume'), ex('world') ],
+  paths: [ex('ev-charger'), ex('historic'), ex('resume'), ex('world')],
   regex: /leaflet@\d\.\d\.\d/g,
   replacement: 'leaflet@' + LEAFLET_VER,
   count: true,

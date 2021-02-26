@@ -6,7 +6,7 @@
 
 const envfile = '.env.js';
 const fs = require('fs');
-var script = fs.readFileSync(envfile, 'utf8');
+let script = fs.readFileSync(envfile, 'utf8');
 
 // script = script.replace(/(.*=|^\/\/.*|^;.*)/g, '');
 script = script.replace(/[\n;]/g, '').replace(/.*=/, '');

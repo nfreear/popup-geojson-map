@@ -7,8 +7,8 @@
 module.exports = function (WIN, superagent, lodashish, VERSION) {
   'use strict';
 
-  var defaults = {
-    latLng: [ 51.505, -0.09 ], // London, UK!
+  const defaults = {
+    latLng: [51.505, -0.09], // London, UK!
     zoom: 3,
     minZoom: 2,
     maxZoom: 12, // Was: 6, 18,
@@ -33,12 +33,12 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
     accessToken: '<%= ENV.ACCESS_TOKEN %>' // No access token required for OpenStreetMap!
   };
 
-  var W = WIN || window;
-  var JSON = W.JSON;
-  var L = W.L;
-  var request = superagent;
-  var CFG = lodashish.extend(defaults, W.MAP_CFG); // Order is significant!
-  var _ = CFG.lodashish ? lodashish : W._;
+  const W = WIN || window;
+  const JSON = W.JSON;
+  const L = W.L;
+  const request = superagent;
+  const CFG = lodashish.extend(defaults, W.MAP_CFG); // Order is significant!
+  const _ = CFG.lodashish ? lodashish : W._;
 
   CFG.version = VERSION;
 
@@ -48,9 +48,9 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
 
   W.console.debug('Map config:', CFG);
 
-  var mymap = L.map(CFG.mapId).setView(CFG.latLng, CFG.zoom);
-  var popupTemplateFn = _.template(CFG.popupTemplate, null, CFG.templateSettings);
-  var accessToken = _.template(CFG.accessToken);
+  const mymap = L.map(CFG.mapId).setView(CFG.latLng, CFG.zoom);
+  const popupTemplateFn = _.template(CFG.popupTemplate, null, CFG.templateSettings);
+  const accessToken = _.template(CFG.accessToken);
 
   L.tileLayer(CFG.tileUrl, {
     subdomains: CFG.subdomains,
@@ -64,7 +64,7 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
   request
     .get(lodashish.cdn(CFG))
     .then(function (response) {
-      var geoData = JSON.parse(response.text);
+      const geoData = JSON.parse(response.text);
 
       W.console.debug('GeoJSON:', geoData);
 
@@ -74,11 +74,11 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
             return L.marker(latlng);
           }
 
-          var props = point.properties;
-          var icon = props[ 'marker-symbol' ];
-          var cls = props[ 'marker-class' ] || '';
-          var html = props[ 'marker-html' ] || '';
-          var clsName = 'icon-{icon} icon-{cls}'.replace('{icon}', icon).replace('{cls}', cls);
+          const props = point.properties;
+          const icon = props['marker-symbol'];
+          const cls = props['marker-class'] || '';
+          const html = props['marker-html'] || '';
+          const clsName = 'icon-{icon} icon-{cls}'.replace('{icon}', icon).replace('{cls}', cls);
 
           console.warn('Point:', point);
 
@@ -86,10 +86,10 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
             return L.marker(latlng, { icon: L.divIcon({ className: clsName, html: html }) });
           }
 
-          var makiIcon = L.icon({
-            iconSize: [ 18, 18 ], // [ 27, 27 ],
-            iconAnchor: [ 9, 18 ], // [ 13, 27 ],
-            popupAnchor: [ 1, -19 ], // [ 1, -24 ],
+          const makiIcon = L.icon({
+            iconSize: [18, 18], // [ 27, 27 ],
+            iconAnchor: [9, 18], // [ 13, 27 ],
+            popupAnchor: [1, -19], // [ 1, -24 ],
             iconUrl: CFG.iconUrl.replace('{icon}', icon),
             className: clsName
           });
@@ -97,7 +97,7 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
         },
 
         onEachFeature: function (feature, layer) {
-          if (feature.properties && feature.properties[ CFG.checkProperty ]) {
+          if (feature.properties && feature.properties[CFG.checkProperty]) {
             layer.bindPopup(popupTemplateFn(feature.properties));
           } else if (feature.properties && feature.properties.popupContent) {
             layer.bindPopup(feature.properties.popupContent);
