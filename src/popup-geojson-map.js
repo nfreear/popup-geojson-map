@@ -4,7 +4,7 @@
   © Nick Freear, 2016-09-26 | License: MIT.
 */
 
-module.exports = function (WIN, superagent, lodashish, VERSION) {
+module.exports = function (WIN, /* superagent, */ lodashish, VERSION) {
   'use strict';
 
   const defaults = {
@@ -34,9 +34,10 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
   };
 
   const W = WIN || window;
-  const JSON = W.JSON;
+  // const JSON = W.JSON;
   const L = W.L;
-  const request = superagent;
+  const fetch = window.fetch;
+  // const request = superagent;
   const CFG = lodashish.extend(defaults, W.MAP_CFG); // Order is significant!
   const _ = CFG.lodashish ? lodashish : W._;
 
@@ -61,12 +62,10 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
     accessToken: accessToken(W.ENV || { ENV: {} })
   }).addTo(mymap);
 
-  request
-    .get(lodashish.cdn(CFG))
-    .then(function (response) {
-      const geoData = JSON.parse(response.text);
-
-      W.console.debug('GeoJSON:', geoData);
+  fetch(lodashish.cdn(CFG))
+    .then(response => response.json())
+    .then(geoData => {
+      console.debug('GeoJSON:', geoData);
 
       L.geoJson(geoData, {
         pointToLayer: function (/* geoJsonPoint */ point, latlng) {
@@ -104,9 +103,6 @@ module.exports = function (WIN, superagent, lodashish, VERSION) {
           }
         }
       }).addTo(mymap);
-    },
-    function (error) {
-      W.console.error('Superagent HTTP error.', error, CFG.geoJson);
-      // W.alert('HTTP error. ' + error);
-    });
+    })
+    .catch(error => console.error('HTTP error.', error, CFG.geoJson));
 };
