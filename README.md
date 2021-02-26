@@ -1,10 +1,10 @@
 
+[![Node.js CI][gci-icon]][gci]
 [![Build status — Travis-CI][travis-icon]][travis]
 [![geojson-popup on Npmjs][npm-icon]][npm]
 [![js-semistandard-style][semi-icon]][semi]
 [![License][license-icon]][mit]
 [![Total downloads - NPMJS.com][downl-icon]][npm]
-
 
 # nfreear / geojson-popup
 
@@ -43,7 +43,7 @@ HTML containing a template, with placeholders, `title` and `audio_url`
 
 <script> MAP_CFG = { geoJson: '{cdn}/data/world-audio-geo.json' } </script>
 
-<script src="https://unpkg.com/geojson-popup@2.3.0#._.js"></script>
+<script src="https://unpkg.com/geojson-popup@2.4.0#._.js"></script>
 ```
 
 GeoJSON, with properties corresponding to the template placeholders, `title` and `audio_url`:
@@ -132,7 +132,7 @@ I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer 
 
 
 [blog]: https://nick.freear.org.uk/2017/06/27/geojson-popup-leaflet.html?utm_source=npm
-[MIT]: https://nfreear.mit-license.org/2016-2019 "MIT License | © 2016-2019 Nick Freear (date: 2016-09-26)"
+[MIT]: https://nfreear.mit-license.org/2016-2021 "MIT License | © 2016-2021 Nick Freear (date: 2016-09-26)"
 [travis-icon]: https://travis-ci.org/nfreear/popup-geojson-map.svg
 [travis]: https://travis-ci.org/nfreear/popup-geojson-map "Build status – Travis-CI"
 [npm-old]: https://npmjs.com/package/popup-geojson-map
@@ -165,6 +165,8 @@ I'm renaming the NPM package from [`popup-geojson-map`][npm-old] to the clearer 
 [npm-icon]: https://img.shields.io/npm/v/geojson-popup.svg "Latest version ~ on NPM"
 [license-icon]: https://img.shields.io/npm/l/geojson-popup.svg
 [downl-icon]: https://img.shields.io/npm/dt/geojson-popup.svg "Count of total downloads ~NPM"
+[gci]: https://github.com/nfreear/popup-geojson-map/actions/workflows/node.js.yml
+[gci-icon]: https://github.com/nfreear/popup-geojson-map/actions/workflows/node.js.yml/badge.svg
 
 <!-- Easily create interactive maps, with popups containing structured data, for example, audio players. -->
 [End]: //.

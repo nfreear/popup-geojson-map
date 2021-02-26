@@ -6,7 +6,7 @@
 
 'use strict';
 
-const VERSION = '2.3.0'; // <Auto>
+const VERSION = '2.4.0'; // <Auto>
 
 const utils = require('./src/utils');
 const lodashish = {
